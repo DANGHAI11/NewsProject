@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image');
-            $table->tinyInteger('status')->default(0);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
