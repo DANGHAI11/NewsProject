@@ -18,8 +18,8 @@ return new class() extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
-            $table->bolean('role')->default(0);
-            $table->bolean('status')->default(0);
+            $table->boolean('role')->default(0);
+            $table->boolean('status')->default(0);
             $table->rememberToken();
             $table->string('reset_password_token', 50)->nullable();
             $table->timestamps();
