@@ -1,0 +1,119 @@
+@mixin center {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+@mixin wh($wight: 0, $height: 0) {
+    @if $wight != 0 {
+        width: $wight;
+    }
+    @if $height != 0 {
+        height: $height;
+    }
+}
+
+@mixin cutText() {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin effectImg() {
+    &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        display: block;
+        content: "";
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+    &:hover {
+        &::before {
+            -webkit-animation: circle 0.75s;
+            animation: circle 0.75s;
+        }
+        img {
+            transform: scale(1.2);
+        }
+    }
+}
+
+@keyframes avatarUser {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes flicker {
+    0% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252), inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+    }
+
+    5% {
+        border: none;
+        box-shadow: none;
+    }
+
+    10% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252), inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+    }
+
+    25% {
+        border: none;
+        box-shadow: none;
+    }
+
+    30% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252), inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+    }
+
+    100% {
+        border: 2px solid rgb(1, 235, 252);
+        box-shadow: 0px 0px 100px rgb(1, 235, 252), inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+    }
+}
+
+@keyframes iconflicker {
+    0% {
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 0.2;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.2;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

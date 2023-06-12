@@ -1,0 +1,67 @@
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 52px 0 52px;
+        margin: 0;
+        width: 100%;
+        & > .row {
+            .logo {
+                padding-top: 148px;
+                margin-bottom: 69px;
+            }
+            .form {
+                .form-space-between {
+                    flex-wrap: wrap;
+                    margin-bottom: 40px;
+                    .remember {
+                        justify-content: flex-start;
+                        input {
+                            width: 9.75px;
+                            height: 9.75px;
+                            margin-top: 4px;
+                        }
+                    }
+                }
+                .form-button {
+                    button {
+                        width: 217.12px;
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    .container {
+        padding: 0 30px;
+        margin: 0;
+        width: 100%;
+        & > .row {
+            .logo {
+                padding-top: 100px;
+                margin-bottom: 60px;
+            }
+            .form {
+                .form-space-between {
+                    .remember {
+                        margin-bottom: 15px;
+                        input {
+                            margin-top: 2px;
+                        }
+                        label{
+                            font-size: 14px;
+                        }
+                    }
+                    a{
+                        font-size: 14px;
+                    }
+                }
+                .form-button {
+                    button {
+                        width: 217.12px;
+                    }
+                }
+            }
+        }
+    }
+}
