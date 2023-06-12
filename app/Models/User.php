@@ -12,6 +12,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const STATUS_ACTIVE = 1;
+
+    const STATUS_INACTIVE = 0;
+
+    const ROLE_ADMIN = 0;
+
+    const ROLE_USER = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +29,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'avatar',
+        'role',
+        'status',
+        'token_verify_email',
+        'reset_password_token',
+        'email_verified_at',
     ];
 
     /**
@@ -29,8 +44,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'token_verify_email',
         'password',
         'remember_token',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -39,7 +60,6 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 }
