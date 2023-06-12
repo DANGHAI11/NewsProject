@@ -1,0 +1,507 @@
+@import "./font.scss";
+@import "./effect.scss";
+@import "./mixin.scss";
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    vertical-align: middle;
+    transition: all 0.4ms linear;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+.row {
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.container {
+    width: 100%;
+    padding: 0 106px 0 100px;
+}
+
+.error {
+    color: red;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@import "./header.scss";
+
+main {
+    margin-bottom: 40px;
+    &.active {
+        margin-top: 122px;
+    }
+    .wrap {
+        .container {
+            .row {
+                .breadcrumb {
+                    width: 100%;
+                    margin: 34px 0;
+                    list-style: none;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    .breadcrumb-item {
+                        font: normal 700 16px/23px "Noto Sans JP";
+                        position: relative;
+                        &:last-child {
+                            &::after {
+                                content: "";
+                            }
+                        }
+                        &::after {
+                            position: absolute;
+                            top: 2px;
+                            right: -15px;
+                            content: ">";
+                            color: #afafaf;
+                            font: normal 400 16px/23px "Noto Sans JP";
+                        }
+                        &.active {
+                            color: #212121;
+                            margin-left: 20px;
+                        }
+                        a {
+                            font: normal 400 16px/23px "Noto Sans JP";
+                            text-decoration: none;
+                            color: #afafaf;
+                        }
+                    }
+                }
+                .form-create-post {
+                    padding: 31px 32px 52px 30px;
+                    background: #d9d9d9;
+                    width: 100%;
+                    .error {
+                        color: red;
+                        font: normal 400 15px/22px "Noto Sans JP";
+                        margin-bottom: 15px;
+                    }
+                    .hidden {
+                        display: none;
+                    }
+                    .title {
+                        width: 100%;
+                        margin-bottom: 16px;
+                        p {
+                            font: normal 700 20px/29px "Noto Sans JP";
+                            color: #212121;
+                        }
+                    }
+                    .form-group {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .btn-upload-image {
+                            font: normal 700 15px/22px "Noto Sans JP";
+                            color: #87b6e7;
+                            background: #ffffff;
+                            border: 1px solid #007bff;
+                            border-radius: 4px;
+                            margin: 10px 0 10px 0;
+                            @include wh(133px, 40px);
+                            width: 133px;
+                            height: 40px;
+                            @include center;
+                            cursor: pointer;
+                        }
+                        .show-image {
+                            width: 269px;
+                            height: 170px;
+                            margin-bottom: 27px;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        label {
+                            width: 100%;
+                            display: block;
+                            font: normal 400 15px/22px "Noto Sans JP";
+                            color: #212121;
+                            margin-bottom: 10px;
+                            span {
+                                color: red;
+                            }
+                        }
+                        input {
+                            width: 100%;
+                            background: #ffffff;
+                            border: 1px solid #dedede;
+                            border-radius: 4px;
+                            color: #000000;
+                            height: 40px;
+                            padding: 0 15px;
+                            margin-bottom: 20px;
+                            &::placeholder {
+                                font: normal 400 15px/22px "Noto Sans JP";
+                                color: #dfdddf;
+                            }
+                        }
+                        textarea {
+                            width: 100%;
+                            font: normal 400 15px/22px "Noto Sans JP";
+                            color: #000000;
+                            padding: 0 19px;
+                            outline: none;
+                            background: #ffffff;
+                            border: 1px solid #dedede;
+                            border-radius: 4px;
+                            height: 459px;
+                            resize: none;
+                            &::placeholder {
+                                color: #dfdddf;
+                            }
+                        }
+                        select {
+                            appearance: none;
+                            @include wh(334px, 40px);
+                            background: #ffffff;
+                            border: 1px solid #dedede;
+                            border-radius: 4px;
+                            margin-bottom: 34px;
+                            font: normal 400 15px/22px "Noto Sans JP";
+                            color: #dfdddf;
+                            padding: 0 15px;
+                        }
+                    }
+                    .button-create {
+                        font: normal 700 15px/22px "Noto Sans JP";
+                        color: #87b6e7;
+                        background: #ffffff;
+                        border: 1px solid #007bff;
+                        border-radius: 4px;
+                        margin: 10px 0 10px 0;
+                        @include wh(133px, 40px);
+                        width: 133px;
+                        height: 40px;
+                        @include center;
+                        cursor: pointer;
+                    }
+                }
+                .detail {
+                    width: 100%;
+                    margin-top: 7px;
+                    .title {
+                        margin-bottom: 40px;
+                        h1 {
+                            font: normal 700 18px/26px "Noto Sans JP";
+                            color: #000000;
+                        }
+                    }
+                    .detail-profile {
+                        width: 100%;
+                        margin-bottom: 41px;
+                        & > .row {
+                            justify-content: space-between;
+                            .avatar {
+                                & > .row {
+                                    .avatar-user {
+                                        width: 36px;
+                                        height: 36px;
+                                        border-radius: 50%;
+                                        margin-right: 5px;
+                                        overflow: hidden;
+                                        img {
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+                                    .user {
+                                        .name-user {
+                                            font: normal 500 12px/17px "Noto Sans JP";
+                                            color: #000000;
+                                        }
+                                        .time-create-post {
+                                            font: normal 400 11px/16px "Noto Sans JP";
+                                            color: #a7a7a7;
+                                        }
+                                    }
+                                }
+                            }
+                            .button-approve {
+                                display: flex;
+                                div {
+                                    @include center;
+                                    color: #ffffff;
+                                    font: normal 500 15px/22px "Noto Sans JP";
+                                    border-radius: 3px;
+                                }
+                                .approve_active {
+                                    background: #18b727;
+                                    width: 110px;
+                                    height: 29px;
+                                    &.not-approve {
+                                        background: #abb1ab;
+                                    }
+                                }
+                                .delete-post {
+                                    cursor: pointer;
+                                    margin-left: 31px;
+                                    width: 104px;
+                                    height: 31px;
+                                    background: #dc3545;
+                                }
+                                .edit-post {
+                                    background: #d7a509;
+                                    width: 110px;
+                                    height: 29px;
+                                    margin-left: 15px;
+                                    @include center;
+                                    font: normal 500 15px/22px "Noto Sans JP";
+                                    color: #ffffff;
+                                    border-radius: 3px;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                    .image-post {
+                        margin-bottom: 40px;
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .content {
+                        font: normal 400 14px/20px "Noto Sans JP";
+                        color: #747474;
+                        margin-bottom: 55px;
+                    }
+                    .relase-heart {
+                        transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+                        cursor: pointer;
+                        i {
+                            &.active {
+                                -webkit-text-fill-color: red;
+                                -webkit-text-stroke-width: 0px;
+                                -webkit-text-stroke: 0px #000000;
+                            }
+                            -webkit-text-fill-color: transparent;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke: 3px #000000;
+                            font-size: 2rem;
+                        }
+                    }
+                }
+                .title-post-detail {
+                    font: normal 700 24px/35px "Noto Sans JP";
+                    color: #212121;
+                    position: relative;
+                    margin-bottom: 47px;
+                    @include center();
+                    &::before {
+                        position: absolute;
+                        left: calc(50% - (63px / 2));
+                        bottom: -18px;
+                        width: 63px;
+                        border: 3px solid #747474;
+                        content: "";
+                    }
+                }
+                .related {
+                    width: 100%;
+                    .row {
+                        gap: 0 36px;
+                        .card {
+                            width: calc(100% / 4 - 27px);
+                            a {
+                                text-decoration: none;
+                                .card-img {
+                                    @include wh(100%, auto);
+                                    aspect-ratio: 1/1;
+                                    overflow: hidden;
+                                    border-radius: 8px 8px 0px 0px;
+                                    img {
+                                        @include wh(100%, 100%);
+                                        object-fit: cover;
+                                    }
+                                }
+                                .card-content {
+                                    background: #ffffff;
+                                    border: 1px solid #cccccc;
+                                    border-top: none;
+                                    border-radius: 0 0 8px 8px;
+                                    padding: 15px 21px 35px 21px;
+                                    .card-title {
+                                        font: normal 700 17px/28px "Noto Sans JP";
+                                        color: #000000;
+                                        @include cutText();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .comment {
+                    width: 100%;
+                    margin-top: 81px;
+                    .form-comment {
+                        width: 100%;
+                        margin-bottom: 22px;
+                        .row {
+                            .avatar-user {
+                                @include wh(48px, 48px);
+                                overflow: hidden;
+                                border-radius: 48px;
+                                margin-right: 17px;
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                            .form-group {
+                                width: calc(100% - (17px + 48px));
+                                position: relative;
+                                input {
+                                    font: normal 500 17px/20.27px "Noto Sans JP";
+                                    width: 100%;
+                                    height: 82px;
+                                    border-radius: 4px;
+                                    border: 1px solid #e1e1e1;
+                                    background: #fff;
+                                    padding: 15px;
+                                }
+                                button {
+                                    position: absolute;
+                                    top: calc(50% - (30px / 2));
+                                    right: 20px;
+                                    width: 60px;
+                                    height: 30px;
+                                    outline: none;
+                                    border: 1px solid #e1e1e1;
+                                    cursor: pointer;
+                                    border-radius: 3px;
+                                    background: #18b727;
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+                    }
+                    .comment-list {
+                        .row {
+                            &.user-comment {
+                                gap: 30px 0;
+                            }
+                            .avatar-user {
+                                width: 48px;
+                                height: 48px;
+                                overflow: hidden;
+                                border-radius: 50%;
+                                margin-right: 17px;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                            .content {
+                                width: calc(100% - (48px + 17px));
+                                .content-card {
+                                    position: relative;
+                                    .user-name {
+                                        font: normal 700 24px/34.75px "Noto Sans JP";
+                                        color: #212121;
+                                        margin-bottom: 6px;
+                                    }
+                                    .comment-user {
+                                        font: normal normal 14px/20.27px "Noto Sans JP";
+                                        color: #212121;
+                                        margin-bottom: 6px;
+                                    }
+                                    .time {
+                                        font: normal normal 14px/20.27px "Noto Sans JP";
+                                        color: #747474;
+                                    }
+                                    .icon-comment {
+                                        position: absolute;
+                                        top: 10px;
+                                        right: 10px;
+                                        padding: 5px;
+                                        cursor: pointer;
+                                        svg {
+                                            font-size: 1.1rem;
+                                            path {
+                                                fill: #18b727;
+                                            }
+                                        }
+                                    }
+                                    .button-comment {
+                                        position: absolute;
+                                        top: 20px;
+                                        right: 24px;
+                                        display: none;
+                                        div,
+                                        button {
+                                            font: normal normal 15px/20.27px "Noto Sans JP";
+                                            width: 80px;
+                                            height: 30px;
+                                            background-color: #adadad;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            color: #000000;
+                                            outline: none;
+                                            border: none;
+                                            cursor: pointer;
+                                            &:first-child {
+                                                margin-bottom: 5px;
+                                            }
+                                        }
+                                    }
+                                    form {
+                                        display: none;
+                                        width: 100%;
+                                        position: relative;
+                                        margin: 15px 0;
+                                        textarea {
+                                            width: 100%;
+                                            height: 100px;
+                                            font: normal 500 17px/20.27px "Noto Sans JP";
+                                            border-radius: 4px;
+                                            border: 1px solid #e1e1e1;
+                                            background: #fff;
+                                            padding: 15px;
+                                        }
+                                        button {
+                                            position: absolute;
+                                            top: 50%;
+                                            right: 30px;
+                                            outline: none;
+                                            border: 1px solid #e1e1e1;
+                                            cursor: pointer;
+                                            border-radius: 3px;
+                                            background: #18b727;
+                                            color: #ffffff;
+                                            width: 60px;
+                                            height: 30px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@import "./popup.scss";
+@import "./footer.scss";
+@import "./reponsive_post.scss";

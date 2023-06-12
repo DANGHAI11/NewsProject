@@ -1,0 +1,224 @@
+.form-user {
+    width: 50%;
+    justify-content: space-between;
+    h1 {
+        color: #ffffff;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .card {
+        width: 200px;
+        height: auto;
+        aspect-ratio: 1/1;
+        background: #07182e;
+        position: relative;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 50%;
+        img {
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .center {
+        @include center();
+        margin: 0 30px;
+        .btn-update-profile {
+            @include center();
+            outline: none;
+            cursor: pointer;
+            width: 150px;
+            height: 50px;
+            background-image: linear-gradient(to top, #d8d9db 0%, #fff 80%, #fdfdfd 100%);
+            border-radius: 30px;
+            border: 1px solid #8f9092;
+            transition: all 0.2s ease;
+            font: normal normal 14px/24px "Noto Sans JP";
+            color: #606060;
+            text-shadow: 0 1px #fff;
+            &:hover,
+            &:active,
+            &:focus
+            {
+                box-shadow:
+                    0 4px 3px 1px #fcfcfc,
+                    0 6px 8px #d6d7d9,
+                    0 -4px 4px #cecfd1,
+                    0 -6px 4px #fefefe,
+                    inset 0 0 3px 3px #cecfd1;
+            }
+        }
+    }
+    .form-control {
+        position: relative;
+        margin: 20px 0;
+        width: 100%;
+        transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        div {
+            display: inline-block;
+            font: normal normal 18px/24px "Noto Sans JP";
+            min-width: 5px;
+            color: #fff;
+        }
+        input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px #fff solid;
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 18px;
+            color: #fff;
+            &:focus,
+            &:valid {
+                outline: 0;
+                border-bottom-color: lightblue;
+                & + label span,
+                & + label span {
+                    color: lightblue;
+                    transform: translateY(-30px);
+                }
+            }
+        }
+        label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            pointer-events: none;
+            span {
+                display: inline-block;
+                font-size: 18px;
+                min-width: 5px;
+                color: #fff;
+                transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+        }
+    }
+    .input-div {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid rgb(1, 235, 252);
+        @include center();
+        overflow: hidden;
+        box-shadow:
+            0px 0px 100px rgb(1, 235, 252),
+            inset 0px 0px 10px rgb(1, 235, 252),
+            0px 0px 5px rgb(255, 255, 255);
+        .icon {
+            color: rgb(1, 235, 252);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 0;
+        }
+        .input {
+            position: absolute;
+            opacity: 0;
+            @include wh(100%,100%);
+            z-index: 1;
+            cursor: pointer !important;
+        }
+    }
+}
+.button-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 0.5em;
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        .btn-user {
+            @include center();
+            @include wh(90px,90px);
+            outline: none;
+            border: none;
+            background: white;
+            box-shadow:
+                rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            transition: 0.2s ease-in-out;
+            button {
+                outline: none;
+                border: none;
+                background: transparent;
+            }
+        }
+    }
+    .up {
+        .btn-user1 {
+            border-radius: 90px 5px 5px 5px;
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                background-color: #cc39a4;
+            }
+            &:hover .instagram {
+                fill: white;
+            }
+            .instagram {
+                margin-top: 1.5em;
+                margin-left: 1.2em;
+                fill: #cc39a4;
+            }
+        }
+        .btn-user2 {
+            border-radius: 5px 90px 5px 5px;
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                background-color: #03a9f4;
+            }
+            &:hover .twitter {
+                fill: white;
+            }
+            .twitter {
+                margin-top: 1.5em;
+                margin-left: -0.9em;
+                fill: #03a9f4;
+            }
+        }
+    }
+    .down {
+        .btn-user3 {
+            border-radius: 5px 5px 5px 90px;
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                background-color: black;
+            }
+            &:hover .github {
+                fill: white;
+            }
+            .github {
+                margin-top: -0.6em;
+                margin-left: 1.2em;
+            }
+        }
+        .btn-user4 {
+            border-radius: 5px 5px 90px 5px;
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                background-color: #8c9eff;
+            }
+            &:hover .discord {
+                fill: white;
+            }
+            .discord {
+                margin-top: -0.9em;
+                margin-left: -1.2em;
+                fill: #8c9eff;
+            }
+        }
+    }
+}
