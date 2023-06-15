@@ -14,8 +14,9 @@ return new class() extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone', 13);
+            $table->string('phone', 13)->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('token_verify_email')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->boolean('role')->default(0);
