@@ -30,7 +30,8 @@ class User extends Authenticatable
         'role',
         'status',
         'token_verify_email',
-        'reset_password_token'
+        'reset_password_token',
+        'email_verified_at'
     ];
 
     /**
@@ -55,7 +56,6 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 }

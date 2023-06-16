@@ -13,30 +13,27 @@ use Illuminate\Support\Str;
 class AuthService
 {
     protected $user;
+
     public function __construct(User $user)
     {
         $this->user = $user;
     }
 
-    public function login($data)
+    public function login(array $data): bool
     {
-        isset($data['remember']) && $data['remember'] ? $remember = true : $remember = false;
-        $model  = [
+        $remember = !empty($data['remember']) ? true : false;
+        $arr_login = [
             'email' => $data['email'],
-            'password' => $data['password'],
-            'status' =>  $this->user::STATUS_ACTIVE
+            'password' => $data['password']
         ];
-        if (Auth::attempt($model, $remember)) {
-            return true;
-        }
-        return false;
+        return Auth::attempt($arr_login, $remember) ? true : false;
     }
 
-    public function register($data, $token)
+    public function register(array $data): bool
     {
-        $data['role'] = User::ROLE_USER;
-        $data['status'] = User::STATUS_INACTIVE;
-        $data['token_verify_email'] = $token;
+        $data['role'] = $this->user::ROLE_USER;
+        $data['status'] = $this->user::STATUS_INACTIVE;
+        $data['token_verify_email'] = Str::random(64);
         if (User::create($data)) {
             Mail::to($data['email'])->send(new VerifyMail($data));
             return true;
@@ -44,12 +41,12 @@ class AuthService
         return false;
     }
 
-    public function forgotPassword($data, $token)
+    public function forgotPassword(array $data): bool
     {
-        $user = User::where(['email' => $data['email'], 'status' => 1])->first();
+        $token = Str::random(20);
+        $user = User::where(['email' => $data['email']])->first();
         if ($user) {
-            $user->reset_password_token = $token;
-            if ($user->save()) {
+            if ($user->update(['reset_password_token' => $token])) {
                 Mail::to($data['email'])->send(new ForgotPasswordMail($user, $token));
                 return true;
             }
@@ -57,15 +54,31 @@ class AuthService
         return false;
     }
 
-    public function changePassword($token)
+    public function changePassword(string $token): bool
     {
-        $user = User::where('reset_password_token', $token)->first();
         $password = Str::random(12);
-        $user->password = $password;
-        if ($user->save()) {
-            Mail::to($user['email'])->send(new ChangePasswordMail($password));
-            return true;
+        $user = User::where('reset_password_token', $token)->first();
+        if ($user) {
+            if ($user->update(['password' => $password])) {
+                Mail::to($user['email'])->send(new ChangePasswordMail($password));
+                return true;
+            }
         }
-        return true;
+        return false;
+    }
+
+    public function verifyAccount(string $token): string
+    {
+        $user = User::where('token_verify_email', $token)->first();
+        $message = __('message.email_identified');
+        if (!empty($user) ) {
+            if (!$user->email_verified_at) {
+                $user->update(['email_verified_at' => now(), 'status' =>  $this->user::STATUS_ACTIVE]);
+                $message = __('message.success_email_verify');
+            } else {
+                $message = __('message.already_email_verify');
+            }
+        }
+        return $message;
     }
 }

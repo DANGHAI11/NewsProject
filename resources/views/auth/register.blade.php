@@ -2,40 +2,40 @@
 @section('content')
 <form class="form" method="POST">
     @csrf
-    <div class="title">Sign up</div>
+    <div class="title">{{ __('message.sign_up') }}</div>
     <div class="form-group row">
-        <label for="name" class="label">Username<span class="required">*</span></label>
+        <label for="name" class="label">{{ __('message.username') }}<span class="required">*</span></label>
         <input type="text" name="name" id="name" value="{{ old('name') }}">
     </div>
     <div class="form-group row">
-        <label for="email" class="label">Email <span class="required">*</span></label>
+        <label for="email" class="label">{{ __('message.email') }} <span class="required">*</span></label>
         <input type="email" name="email" id="email" value="{{ old('email') }}">
     </div>
     <div class="form-group row">
-        <label for="password" class="label">Password <span class="required">*</span></label>
+        <label for="password" class="label">{{ __('message.password') }} <span class="required">*</span></label>
         <input type="password" name="password" id="password">
     </div>
     <div class="form-group row">
-        <label for="confirm_password" class="label">Password confirm <span class="required">*</span></label>
-        <input type="password" name="confirm_password" id="confirm_password">
+        <label for="confirm_password" class="label">{{ __('message.password_confirm') }}<span class="required">*</span></label>
+        <input type="password" name="confirm_password" id="confirm-password">
         @error('name')
-            <span class="error">{{ $message  }}</span>
+            <span class="error">{{ $message }}</span>
         @enderror
         @error('email')
-        <span class="error">{{ $message  }}</span>
+        <span class="error">{{ $message }}</span>
         @enderror
         @error('password')
-        <span class="error">{{ $message  }}</span>
+        <span class="error">{{ $message }}</span>
         @enderror
         @error('confirm_password')
-        <span class="error">{{ $message  }}</span>
+        <span class="error">{{ $message }}</span>
         @enderror
     </div>
     <div class="form-button row">
-        <button>Sign up</button>
+        <button>{{ __('message.sign_up') }}</button>
     </div>
     <div class="form-rq-link row">
-        <a href="{{ route('login') }}">Already have an account? Login</a>
+        <a href="{{ route('login') }}">{{ __('message.login_here') }}</a>
     </div>
 </form>
 @endsection
