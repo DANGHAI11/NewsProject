@@ -1,3 +1,3 @@
 <div>
-    <h2>Mật khẩu mới của bạn là: {{ $password }}</h2>
+    <h2>Your new password is: {{ $password }}</h2>
 </div>
