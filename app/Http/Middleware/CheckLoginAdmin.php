@@ -22,6 +22,6 @@ class CheckLoginAdmin
             return $next($request);
         }
 
-        return redirect()->route('post-home');
+        return redirect()->route('home');
     }
 }
