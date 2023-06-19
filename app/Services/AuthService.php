@@ -21,7 +21,7 @@ class AuthService
 
     public function login(array $data): bool
     {
-        $remember = !empty($data['remember']);
+        $remember = ! empty($data['remember']) ? true : false;
         $arrLogin = [
             'email' => $data['email'],
             'password' => $data['password'],
@@ -78,7 +78,7 @@ class AuthService
     {
         $user = User::where(['token_verify_email' => $token, 'status' => $this->user::STATUS_INACTIVE])->first();
         $message = __('message.already_email_verify');
-        if (!empty($user)) {
+        if (! empty($user)) {
             $user->update(['email_verified_at' => now(), 'status' => $this->user::STATUS_ACTIVE]);
             $message = __('message.success_email_verify');
         }
