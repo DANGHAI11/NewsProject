@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::middleware(['check_login'])->group(function () {
     Route::get('register', [AuthController::class, 'viewRegister'])->name('register');
