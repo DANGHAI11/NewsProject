@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -12,7 +11,9 @@ use Illuminate\Queue\SerializesModels;
 class VerifyMail extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $data;
+
     /**
      * Create a new message instance.
      */
@@ -44,6 +45,7 @@ class VerifyMail extends Mailable
             ],
         );
     }
+
     /**
      * Get the attachments for the message.
      *

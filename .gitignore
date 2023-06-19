@@ -18,5 +18,3 @@ yarn-error.log
 /.idea
 /.vscode
 /css/*.css.map
-composer.json
-composer.lock

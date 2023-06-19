@@ -18,9 +18,10 @@ class CheckLoginUser
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if (Auth::check() && $user->role = User::ROLE_USER && $user->status == User::STATUS_ACTIVE) {
+        if (Auth::check() && $user->role = User::ROLE_USER) {
             return $next($request);
         }
+
         return redirect()->route('login');
     }
 }
