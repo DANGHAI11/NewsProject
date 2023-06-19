@@ -13,9 +13,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     const STATUS_ACTIVE = 1;
+
     const STATUS_INACTIVE = 0;
+
     const ROLE_ADMIN = 0;
+
     const ROLE_USER = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -31,7 +35,7 @@ class User extends Authenticatable
         'status',
         'token_verify_email',
         'reset_password_token',
-        'email_verified_at'
+        'email_verified_at',
     ];
 
     /**

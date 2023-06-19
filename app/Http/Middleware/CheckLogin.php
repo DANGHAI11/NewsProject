@@ -2,13 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckLoginAdmin
+class CheckLogin
 {
     /**
      * Handle an incoming request.
@@ -17,11 +16,10 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if (Auth::check() && $user->role = User::ROLE_ADMIN) {
-            return $next($request);
+        if (Auth::check()) {
+            return redirect()->route('home');
         }
 
-        return redirect()->route('post-home');
+        return $next($request);
     }
 }

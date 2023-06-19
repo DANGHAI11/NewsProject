@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Services\AuthService;
 
 class AuthController extends Controller
 {
@@ -38,9 +38,10 @@ class AuthController extends Controller
         $data = $request->all();
         $result = $this->authService->login($data);
         if ($result) {
-            return redirect()->route('post-home');
+            return redirect()->route('home');
         }
-        return back()->with("error", __('message.error_login'));
+
+        return back()->with('error', __('message.error_login'));
     }
 
     public function register(RegisterRequest $request)
@@ -50,18 +51,21 @@ class AuthController extends Controller
         if ($result) {
             return redirect()->route('login')->with('success', __('message.success_register'));
         }
+
         return back()->with('error', __('message.error_register'));
     }
 
     public function logout()
     {
         Auth::logout();
+
         return redirect()->route('login');
     }
 
     public function verifyAccount($token)
     {
         $message = $this->authService->verifyAccount($token);
+
         return redirect()->route('login')->with('success', $message);
     }
 
@@ -72,6 +76,7 @@ class AuthController extends Controller
         if ($result) {
             return redirect()->route('login')->with('success', __('message.forgot_email'));
         }
+
         return back()->with('error', __('message.error_forgot_email'));
     }
 
@@ -81,6 +86,7 @@ class AuthController extends Controller
         if ($result) {
             return redirect()->route('login')->with('success', __('message.has_been_password'));
         }
+
         return redirect()->route('login')->with('error', __('message.error_forgot_email'));
     }
 }

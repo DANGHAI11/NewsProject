@@ -17,7 +17,7 @@
     </div>
     <div class="form-group row">
         <label for="confirm_password" class="label">{{ __('message.password_confirm') }}<span class="required">*</span></label>
-        <input type="password" name="confirm_password" id="confirm-password">
+        <input type="password" name="password_confirmation" id="confirm-password">
         @error('name')
             <span class="error">{{ $message }}</span>
         @enderror

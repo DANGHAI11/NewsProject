@@ -19,6 +19,7 @@ class CheckStatus
         if ($request->status == User::STATUS_ACTIVE) {
             return $next($request);
         }
-        return redirect()->route('login')->with('error',__('message.error_status_active'));
+
+        return redirect()->route('login')->with('error', __('message.error_status_active'));
     }
 }
