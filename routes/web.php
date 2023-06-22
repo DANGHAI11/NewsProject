@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get("post/detail-{id}",[PostController::class, 'show'])->name('detail');
 Route::middleware(['check_login'])->group(function () {
     Route::get('register', [AuthController::class, 'viewRegister'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('post-register');
@@ -28,5 +29,7 @@ Route::middleware(['check_login'])->group(function () {
     Route::get('change-password/{token}', [AuthController::class, 'changePassword'])->name('change-password');
 });
 Route::group(['middleware' => ['check_login_user'], 'as' => 'post-'], function () {
-
+    Route::get('create-post', [PostController::class, 'create'])->name('create');
+    Route::post('create-post', [PostController::class, 'store'])->name('store');
+    Route::delete('delete-post', [PostController::class,'destroy'])->name('delete');
 });
