@@ -1,0 +1,143 @@
+.noti-center {
+    font: normal 500 15px/22px "Noto Sans JP";
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.noti-check {
+    border-radius: 5px;
+    width: auto;
+    height: 45px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2b3246;
+    cursor: pointer;
+    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
+    color: #0ad406;
+    margin: 20px;
+}
+.noti-check:hover {
+    background-color: rgb(255 255 255);
+    transition: 0.5s;
+}
+
+.noti-color {
+    animation: color 2s linear infinite;
+}
+
+.noti-info {
+    border-radius: 5px;
+    width: auto;
+    height: 45px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #2b3246;
+    cursor: pointer;
+    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
+    color: rgb(82, 125, 243);
+    margin: 20px;
+}
+
+.noti-spin {
+    animation: spin 2s linear infinite;
+}
+
+.noti-info:hover {
+    background-color: rgba(82, 125, 243, 0.5);
+    transition: 0.5s;
+}
+
+.noti-warning {
+    border-radius: 5px;
+    width: auto;
+    height: 45px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2b3246;
+    cursor: pointer;
+    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
+    color: rgb(247, 149, 72);
+    margin: 20px;
+}
+
+.noti-warning:hover {
+    background-color: rgba(247, 149, 73, 0.5);
+    transition: 0.5s;
+}
+
+.noti-rotate {
+    animation: rotate 2s linear infinite;
+}
+.noti-danger {
+    border-radius: 5px;
+    width: auto;
+    height: 45px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #2b3246;
+    cursor: pointer;
+    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
+    color: rgb(255, 10, 1);
+    margin: 20px;
+}
+
+.noti-danger:hover {
+    background-color: rgba(255, 10, 1, 0.33);
+    transition: 0.5s;
+}
+
+.noti-shine {
+    animation: shine 2s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes color {
+    50% {
+        color: #2b3246;
+    }
+    100% {
+        color: #0ad406;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(90deg);
+    }
+    40% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        color: #2b3246;
+    }
+    50% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 40px red, 0 0 60px red,
+            0 0 80px red;
+    }
+}

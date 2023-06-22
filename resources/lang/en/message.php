@@ -25,4 +25,6 @@ return [
     'sign_up_here' => 'Don’t have an account? Sign up here',
     'login_here' => 'Already have an account? Login',
     'password_confirm' => 'Password confirm',
+    'select' => 'Select',
+    'other' => 'Other'
 ];
