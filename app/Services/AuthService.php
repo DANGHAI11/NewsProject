@@ -25,6 +25,7 @@ class AuthService
         $arrLogin = [
             'email' => $data['email'],
             'password' => $data['password'],
+            'status' => $this->user::STATUS_ACTIVE
         ];
 
         return Auth::attempt($arrLogin, $remember);
