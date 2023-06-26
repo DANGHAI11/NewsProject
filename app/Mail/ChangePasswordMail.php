@@ -10,7 +10,8 @@ use Illuminate\Queue\SerializesModels;
 
 class ChangePasswordMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     private $password;
 

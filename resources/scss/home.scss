@@ -1,0 +1,254 @@
+@import "./effect.scss";
+@import "./font.scss";
+@import "./mixin.scss";
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+.row {
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.container {
+    width: 100%;
+    padding: 0 101px 0 102px;
+}
+
+@import "./header.scss";
+
+main {
+    background: #ffffff;
+    margin-top: 72.58px;
+    .wrap {
+        .container {
+            .title-category {
+                @include center();
+                justify-content: space-between;
+                margin-bottom: 38px;
+                .title {
+                    font: normal 700 50px/72px "Noto Sans JP";
+                    color: #000000;
+                }
+                .category {
+                    position: relative;
+                    select {
+                        background: #ffffff;
+                        border: 1px solid #dedede;
+                        border-radius: 4px;
+                        @include wh(144px, 0);
+                        padding: 7px 30px 11px 15px;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        color: #212121;
+                        font: normal 500 15px/22px "Noto Sans JP";
+                    }
+                    .arrow {
+                        position: absolute;
+                        top: 12px;
+                        right: 20.42px;
+                        img {
+                            vertical-align: inherit;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            .body {
+                margin-bottom: 50px;
+                .row {
+                    gap: 70px 30px;
+                    .card {
+                        @include wh(calc(100% / 3 - 20px), 0);
+                        background: #ffffff;
+                        border-radius: 8px;
+                        -webkit-border-radius: 8px;
+                        -moz-border-radius: 8px;
+                        -ms-border-radius: 8px;
+                        -o-border-radius: 8px;
+
+                        a {
+                            text-decoration: none;
+                            .card-img {
+                                @include wh(calc(100%), auto);
+                                aspect-ratio: 3/2;
+                                overflow: hidden;
+                                transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+                                position: relative;
+                                @include effectImg();
+                                border-radius: 8px 8px 0 0;
+                                -webkit-border-radius: 8px 8px 0 0;
+                                -moz-border-radius: 8px 8px 0 0;
+                                -ms-border-radius: 8px 8px 0 0;
+                                -o-border-radius: 8px 8px 0 0;
+                                img {
+                                    @include wh(100%, 100%);
+                                    object-fit: cover;
+                                    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+                                }
+                            }
+                            .card-content {
+                                border: 1px solid #cccccc;
+                                border-top: none;
+                                padding: 25px 13px 31px 20px;
+                                .card-flex {
+                                    @include center;
+                                    justify-content: start;
+                                    margin-bottom: 15px;
+                                    flex-wrap: wrap;
+                                    .card-user {
+                                        font: normal 400 18px/30px "SVN-Gilroy";
+                                        color: #211e3b;
+                                        @include center;
+                                        margin-right: 21px;
+                                        svg {
+                                            margin-right: 9.5px;
+                                        }
+                                    }
+                                    .card-time {
+                                        font: normal 400 18px/30px "SVN-Gilroy";
+                                        color: #211e3b;
+                                        @include center;
+                                        svg {
+                                            margin-right: 9.5px;
+                                        }
+                                    }
+                                }
+                            }
+                            .card-title {
+                                font: normal 700 20px/28px "SVN-Gilroy Bold";
+                                color: #211e3b;
+                                margin-bottom: 10px;
+                                @include cutText();
+                            }
+                            .card-text {
+                                font: normal 400 18px/25px "SVN-Gilroy";
+                                color: #211e3b;
+                                margin-bottom: 19px;
+                                @include cutText();
+                            }
+                            .card-button {
+                                @include wh(137px, 40px);
+                                background: #ffffff;
+                                border: 1px solid #e4e4e4;
+                                border-radius: 4px;
+                                font: normal 400 14px/20px "SVN-Gilroy";
+                                color: #c40000;
+                                cursor: pointer;
+                                &:hover {
+                                    transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+                                    box-shadow: inset 300px 0 0 0 #c40000;
+                                    color: #ffffff;
+                                    svg {
+                                        fill: #ffffff;
+                                        path {
+                                            stroke: #ffffff;
+                                        }
+                                    }
+                                }
+                                svg {
+                                    margin-left: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .pagination {
+                @include center;
+                margin-bottom: 96px;
+                ul {
+                    @include center;
+                    list-style: none;
+                    li {
+                        margin-right: 10px;
+                        width: 32px;
+                        height: 32px;
+                        &:hover {
+                            @include wh(32px, 32px);
+                            background: #ffe4e4;
+                            border-radius: 100%;
+                            a {
+                                color: #c40000;
+                            }
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        &.first {
+                            @include wh(40px, 40px);
+                            border-radius: 50%;
+                            background: #c40000;
+                            a {
+                                color: #ffffff;
+                                @include center;
+                                margin-top: 0px;
+                                @include wh(100%, 100%);
+                            }
+                        }
+                        &.end {
+                            @include wh(40px, 40px);
+                            border-radius: 100%;
+                            background: #c40000;
+                            a {
+                                color: #ffffff;
+                                @include center;
+                                margin-top: 0px;
+                                @include wh(100%, 100%);
+                            }
+                        }
+                        &.active {
+                            @include wh(32px, 32px);
+                            background: #ffe4e4;
+                            border-radius: 50%;
+                            a {
+                                color: #c40000;
+                            }
+                        }
+                        a {
+                            text-decoration: none;
+                            font: normal 700 18px/0 "SVN-Gilroy";
+                            color: #211e3b;
+                            border-radius: 100%;
+                            -webkit-border-radius: 100%;
+                            -moz-border-radius: 100%;
+                            -ms-border-radius: 100%;
+                            -o-border-radius: 100%;
+                            @include center();
+                            @include wh(100%, 100%);
+                        }
+                        &.disable {
+                            background: #e5e5e5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+footer {
+    @include center;
+    color: #ffffff;
+    @include wh(0, 94px);
+    background: #000000;
+    div {
+        p {
+            font: normal 500 15px/22px "Noto Sans JP";
+            color: #ffffff;
+        }
+    }
+}
+
+@import "./responsive.scss";

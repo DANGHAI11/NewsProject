@@ -12,20 +12,13 @@ use Illuminate\Support\Str;
 
 class AuthService
 {
-    protected $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
     public function login(array $data): bool
     {
         $remember = !empty($data['remember']);
         $arrLogin = [
             'email' => $data['email'],
             'password' => $data['password'],
-            'status' => $this->user::STATUS_ACTIVE
+            'status' => User::STATUS_ACTIVE
         ];
 
         return Auth::attempt($arrLogin, $remember);
@@ -33,8 +26,8 @@ class AuthService
 
     public function register(array $data): bool
     {
-        $data['role'] = $this->user::ROLE_USER;
-        $data['status'] = $this->user::STATUS_INACTIVE;
+        $data['role'] = User::ROLE_USER;
+        $data['status'] = User::STATUS_INACTIVE;
         $data['token_verify_email'] = Str::random(64);
         if (User::create($data)) {
             Mail::to($data['email'])->send(new VerifyMail($data));
@@ -77,10 +70,10 @@ class AuthService
 
     public function verifyAccount(string $token): string
     {
-        $user = User::where(['token_verify_email' => $token, 'status' => $this->user::STATUS_INACTIVE])->first();
+        $user = User::where(['token_verify_email' => $token, 'status' => User::STATUS_INACTIVE])->first();
         $message = __('message.already_email_verify');
         if (!empty($user)) {
-            $user->update(['email_verified_at' => now(), 'status' => $this->user::STATUS_ACTIVE]);
+            $user->update(['email_verified_at' => now(), 'status' => User::STATUS_ACTIVE]);
             $message = __('message.success_email_verify');
         }
 
