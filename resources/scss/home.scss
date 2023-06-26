@@ -201,7 +201,7 @@ main {
                         &.end {
                             @include wh(40px, 40px);
                             border-radius: 100%;
-                            background: #e5e5e5;
+                            background: #c40000;
                             a {
                                 color: #ffffff;
                                 @include center;
@@ -228,6 +228,10 @@ main {
                             -o-border-radius: 100%;
                             @include center();
                             @include wh(100%, 100%);
+                        }
+                        &.disable{
+                            background: #e5e5e5;
+                           
                         }
                     }
                 }

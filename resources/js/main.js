@@ -33,7 +33,7 @@ $(document).ready(function () {
         });
     });
 
-    $(".login").click(function (e) {
+    $("#login-click").click(function (e) {
         e.preventDefault();
         $(".menu-profile").toggle();
     });
@@ -58,19 +58,22 @@ $(document).ready(function () {
         $(".popup").css("display", "none");
     });
 
-    // $(".popup-delete").click(function(){
-    //     $.ajax({
-    //         url: urlDelete,
-    //         type: "DELETE",
-    //         data:{
-    //             id: idPost
-    //         },
-    //         success: function() {
-    //             console.log("chay duoc");
-    //             // window.location.href = urlHome+"/";
-    //          }
-    //     });
-    // })
+    if ($(window).width() < 576) {
+        $(".related-slider").addClass("owl-carousel owl-theme");
+        $(".related-slider").owlCarousel({
+            items: 1,
+            margin: 50,
+            nav: true,
+        });
+    }
+
+    $("#category-search").change(function (e) {
+        if ($(this).val() == 0) {
+            window.location.href = "/";
+        } else {
+            window.location.href = $(this).val();
+        }
+    });
 });
 
 const menu = $(".header-left");

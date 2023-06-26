@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,7 @@ class Post extends Model
 
     const STATUS_ACTIVE = 1;
 
-    const STATUS_INACTIVE = 1;
+    const STATUS_INACTIVE = 0;
 
     const HOME_LIMIT = 9;
 
@@ -38,4 +39,8 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', $this::STATUS_ACTIVE);
+    }
 }

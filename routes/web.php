@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get("post/detail-{id}",[PostController::class, 'show'])->name('detail');
-Route::middleware(['check_login'])->group(function () {
+Route::get('', [PostController::class, 'index'])->name('home');
+Route::get('search-by-category/{category_id}', [PostController::class, 'index'])->name('seach-by-category');
+Route::get('search-by-title', [PostController::class, 'index'])->name('seach-by-title');
+Route::get('post/detail-{id}', [PostController::class, 'show'])->name('detail');
+Route::middleware(['checkLogin'])->group(function () {
     Route::get('register', [AuthController::class, 'viewRegister'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('post-register');
     Route::get('login', [AuthController::class, 'viewLogin'])->name('login');
@@ -27,9 +29,14 @@ Route::middleware(['check_login'])->group(function () {
     Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('forgot-password');
     Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('post-forgot-password');
     Route::get('change-password/{token}', [AuthController::class, 'changePassword'])->name('change-password');
+    Route::get('myblog', [PostController::class, 'index'])->name('myblog');
 });
-Route::group(['middleware' => ['check_login_user'], 'as' => 'post-'], function () {
+Route::group(['middleware' => ['checkLoginUser'], 'as' => 'post.'], function () {
     Route::get('create-post', [PostController::class, 'create'])->name('create');
     Route::post('create-post', [PostController::class, 'store'])->name('store');
-    Route::delete('delete-post', [PostController::class,'destroy'])->name('delete');
+    Route::middleware(['checkPermissionBlog'])->group(function () {
+        Route::get('update-post/{id}-post', [PostController::class, 'edit'])->name('edit');
+        Route::put('update-post/{id}-post', [PostController::class, 'update'])->name('update');
+        Route::delete('delete-post', [PostController::class, 'destroy'])->name('delete');
+    });
 });

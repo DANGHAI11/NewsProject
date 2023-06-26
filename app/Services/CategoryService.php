@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Collection;
 
 class CategoryService
 {
-
     protected $categories;
 
     public function __construct(Category $categories)
@@ -14,15 +14,9 @@ class CategoryService
         $this->categories = $categories;
     }
 
-    public function getAllCategories(): object
+    public function getAllCategories(): Collection|null
     {
-        $categories = $this->categories::where(['status' => $this->categories::STATUS_ACTIVE])->get();
-        return $categories;
+        return $this->categories::where(['status' => $this->categories::STATUS_ACTIVE])->get();
     }
 
-    public function createCategory(array $data): object
-    {
-        $result = $this->categories::create($data);
-        return $result;
-    }
 }

@@ -26,5 +26,11 @@ return [
     'login_here' => 'Already have an account? Login',
     'password_confirm' => 'Password confirm',
     'select' => 'Select',
-    'other' => 'Other'
+    'other' => 'Other',
+    'success_create_post' => 'Created post successful',
+    'error_create_post' => 'Created post fail',
+    'post_does_exist' => 'The post doesn’t exist',
+    'success_delete_post' => 'Post delete successfully.',
+    'error_delete_post' => 'Post detete fail',
+    'permission' => 'You do not have permission to access this page',
 ];
