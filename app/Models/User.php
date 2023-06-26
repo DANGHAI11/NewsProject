@@ -10,7 +10,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     const STATUS_ACTIVE = 1;
 
@@ -49,10 +51,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
 
     /**
      * The attributes that should be cast.

@@ -1,0 +1,309 @@
+@media screen and (max-width: 1200px) {
+    header {
+        .nav {
+            .container {
+                .row {
+                    .header-right {
+                        .form-search {
+                            @include wh(250px, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1000px) {
+    header {
+        .nav {
+            .container {
+                .row {
+                    .header-right {
+                        justify-content: space-between;
+                        @include wh(100%, 0);
+                        margin-bottom: 15px;
+                        .form-search {
+                            @include wh(250px, 0);
+                        }
+                    }
+                    .header-left {
+                        @include wh(100%);
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+    }
+    main {
+        .wrap {
+            .container {
+                .body {
+                    .row {
+                        .card {
+                            @include wh(calc(100% / 2 - 20px), 0);
+                            a {
+                                .card-content {
+                                    .card-flex {
+                                        .card-user {
+                                            margin-left: 0px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 576px) {
+    .container {
+        @include wh(100%, 0);
+        padding: 0 68px 0 64px;
+    }
+    header {
+        overflow: hidden;
+        .background-image {
+            @include wh(100%, 454.49px);
+            img {
+                @include wh( 167%, 100%);
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+        .nav {
+            padding: 0;
+            background: #ffffff;
+            .container {
+                padding: 0 23px 0 22px;
+                .row {
+                    .mobile {
+                        @include wh(100%, 69px);
+                        @include center();
+                        justify-content: space-between;
+                        .bar-mobile {
+                            cursor: pointer;
+                        }
+                        .logo-mobile {
+                            @include wh(137px, 45px);
+                            a {
+                                @include wh(100%, 100%);
+                                img {
+                                    @include wh(100%, 100%);
+                                }
+                            }
+                        }
+                        .search-mobile {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .header-right {
+                        display: none;
+                        position: fixed;
+                        top: 70px;
+                        right: 10px;
+                        &.active {
+                            display: flex;
+                            width: auto;
+                        }
+                        .logo {
+                            display: none;
+                        }
+                        .form-search {
+                            @include wh(300px, 0);
+                        }
+                    }
+                    .header-left {
+                        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                        position: fixed;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        text-align: center;
+                        align-items: center;
+                        @include wh(250px, 100vh);
+                        z-index: 1000;
+                        top: 0;
+                        left: -300px;
+                        background: #ffffff;
+                        padding: 30px 20px;
+                        z-index: 100;
+                        &.active {
+                            width: 300px;
+                            height: 300px;
+                            top: calc(50% - (300px / 2));
+                            left: calc(50% - (300px / 2));
+                            box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.25);
+                            > * {
+                                margin-bottom: 20px;
+                                width: 80%;
+                                height: 40px;
+                                @include center();
+                            }
+                        }
+                        .logo-mobile {
+                            margin: 15px 0 30px 0 !important;
+                            @include center();
+                            @include wh(100%, 0);
+                        }
+                        a {
+                            margin-bottom: 15px;
+                            &.home-top{
+                                margin-right: 0;
+                            }
+                        }
+                        .left-login{ 
+                            margin-left: 0;
+                        }
+                        .left-sign-up{
+                            margin-left: 0;
+                        }
+                        .login {
+                            margin: 0 0 15px 0 !important;
+                            a {
+                                direction: rtl;
+                                span {
+                                    margin: 0 0 0 10px !important;
+                                }
+                                svg {
+                                    display: block;
+                                    @include wh(20px, 20px);
+                                }
+                            }
+                        }
+                        .menu-close {
+                            display: none;
+                            position: fixed;
+                            left: 220px;
+                            @include wh(23px, 20px);
+                            cursor: pointer;
+                            &:hover {
+                                svg {
+                                    path {
+                                        fill: red;
+                                    }
+                                }
+                            }
+                            svg {
+                                @include wh(100%, 100%);
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .background-mobile {
+                        position: fixed;
+                        width: 100%;
+                        height: 100vh;
+                        top: 0;
+                        left: 0;
+                        background: #b0b0b07d;
+                        z-index: 90;
+                    }
+                }
+            }
+        }
+    }
+    main {
+        margin-top: 69.51px;
+        .wrap {
+            .container {
+                .title-category {
+                    margin-bottom: 39px;
+                    .title {
+                        font-size: 30px;
+                        line-height: 43px;
+                    }
+                    .category {
+                        position: relative;
+                        .arrow {
+                            position: absolute;
+                        }
+                    }
+                }
+                .body {
+                    margin-bottom: 67px;
+                    .row {
+                        gap: 50px 0;
+                        .card {
+                            @include wh(100%, 0);
+
+                            a {
+                                .card-content {
+                                    .card-flex {
+                                        .card-user {
+                                            margin-right: 15px;
+                                            font-size: 16px;
+                                            svg {
+                                                margin-right: 5px;
+                                                width: 20px;
+                                                height: 20px;
+                                            }
+                                        }
+                                        .card-time {
+                                            font-size: 16px;
+                                            svg {
+                                                margin-right: 5px;
+                                                width: 20px;
+                                                height: 20px;
+                                            }
+                                        }
+                                    }
+                                }
+                                text-decoration: none;
+                                .card-title {
+                                    -webkit-line-clamp: 3;
+                                }
+                                .card-text {
+                                    -webkit-line-clamp: 3;
+                                }
+                            }
+                        }
+                    }
+                }
+                .pagination {
+                    margin-bottom: 53px;
+                    ul {
+                        li {
+                            .first {
+                                width: 38px;
+                                height: 38px;
+                            }
+                            .end {
+                                width: 38px;
+                                height: 38px;
+                            }
+                            a{
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container {
+        width: 100%;
+        padding: 0 30px 0 30px;
+    }
+
+    main {
+        .wrap {
+            .container {
+                .pagination {
+                    ul {
+                        width: 100%;
+                        justify-content: space-between;
+                        li {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

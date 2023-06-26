@@ -1,0 +1,68 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(72, 72, 72, 0.4);
+    display: none;
+    .popup-content {
+        position: relative;
+        width: 542px;
+        height: 251px;
+        left: 467px;
+        top: 185px;
+        background: #ffffff;
+        box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.04);
+        .popup-header {
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px solid #d9d9d9;
+            .title {
+                font: normal 700 20px/29px "Noto Sans JP";
+                color: #212121;
+            }
+            .close {
+                position: absolute;
+                right: 11.41px;
+                top: 10px;
+                cursor: pointer;
+            }
+        }
+        .popup-body {
+            padding: 45px 0 51px 0;
+            font: normal 400 15px/22px "Noto Sans JP";
+            text-align: center;
+            color: #212121;
+            border-bottom: 1px solid #d9d9d9;
+        }
+        .popup-footer {
+            padding: 11.98px 54px 16px 53px;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                width: 80px;
+                height: 40px;
+                outline: none;
+                color: #ffffff;
+                font: normal 400 20px/29px 'Noto Sans JP';
+                cursor: pointer;
+            }
+            .popup-cancel {
+                background: #b0b0b0;
+                border: 1px solid #b0b0b0;
+                border-radius: 4px;
+            }
+            .popup-delete {
+                background: #dc3545;
+                border: 1px solid #dc3545;
+                border-radius: 4px;
+            }
+        }
+    }
+}
