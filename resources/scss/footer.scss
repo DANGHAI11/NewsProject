@@ -1,0 +1,12 @@
+footer {
+    @include center;
+    color: #ffffff;
+    @include wh(0, 94px);
+    background: #000000;
+    div {
+        p {
+            font: normal 500 15px/22px "Noto Sans JP";
+            color: #ffffff;
+        }
+    }
+}
