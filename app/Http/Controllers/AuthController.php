@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function __construct(AuthService $authService)
     {
-        $this->middleware('check_status')->only('login', 'forgotPassword');
+        $this->middleware('checkStatus')->only('login', 'forgotPassword');
         $this->authService = $authService;
     }
 
