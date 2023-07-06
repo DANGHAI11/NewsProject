@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('content')
-    <form class="form" action="{{ route('post-login') }}" method="POST">
+    <form class="form" action="{{ route('post.login') }}" method="POST">
         @csrf
         <div class="title">{{ __('message.sign_in') }}</div>
         <input type="hidden" name="status" value="1">
@@ -22,7 +22,7 @@
             <div class="remember row">
                 <input type="checkbox" name="remember" id="remember_id"><label for="remember_id">{{ __('message.remember_password') }}</label>
             </div>
-            <a href="{{ route('forgot-password') }}">{{ __('message.forgot_your_password') }}</a>
+            <a href="{{ route('forgot.password') }}">{{ __('message.forgot_your_password') }}</a>
         </div>
         <div class="form-button row">
             <button>{{ __('message.login') }}</button>

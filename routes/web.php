@@ -22,12 +22,12 @@ Route::get('searchByTitle', [PostController::class, 'index'])->name('search.titl
 Route::get('post/{postDetail}/detail', [PostController::class, 'show'])->name('detail');
 Route::middleware(['guest'])->group(function () {
     Route::get('register', [AuthController::class, 'viewRegister'])->name('register');
-    Route::post('register', [AuthController::class, 'register'])->name('post-register');
+    Route::post('register', [AuthController::class, 'register'])->name('post.register');
     Route::get('login', [AuthController::class, 'viewLogin'])->name('login');
-    Route::post('login', [AuthController::class, 'login'])->name('post-login');
-    Route::get('verifyEmail/{token}', [AuthController::class, 'verifyAccount'])->name('verify-email');
-    Route::get('forgotPassword', [AuthController::class, 'viewForgotPassword'])->name('forgot-password');
-    Route::post('forgotPassword', [AuthController::class, 'forgotPassword'])->name('post-forgot-password');
+    Route::post('login', [AuthController::class, 'login'])->name('post.login');
+    Route::get('verifyEmail/{token}', [AuthController::class, 'verifyAccount'])->name('verify.email');
+    Route::get('forgotPassword', [AuthController::class, 'viewForgotPassword'])->name('forgot.password');
+    Route::post('forgotPassword', [AuthController::class, 'forgotPassword'])->name('post.forgot.password');
     Route::get('changePassword/{token}', [AuthController::class, 'changePassword'])->name('change-password');
 });
 
