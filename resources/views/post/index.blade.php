@@ -6,7 +6,7 @@
                 <div class="title-category row">
                     <div class="title">{{ __('message.list_blog') }}</div>
                     <div class="category">
-                        <select id="select-category">
+                        <select id="selectCategory">
                             <option value>{{ __('message.category') }}</option>
                             @if($categories)
                                 @foreach ($categories as $cate)

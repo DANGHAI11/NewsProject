@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Services\CategoryService;
 use App\Services\CommentService;
@@ -104,7 +105,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $postUpdate)
+    public function update(UpdatePostRequest $request, Post $postUpdate)
     {
         $this->authorize('update', $postUpdate);
         $data = $request->all();

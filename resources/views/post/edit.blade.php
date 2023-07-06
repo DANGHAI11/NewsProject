@@ -17,10 +17,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="category-id">{{ __('message.category') }}<span>*</span></label>
-                                <select name="categiory_id" id="category-id" class="category">
+                                <select name="category_id" id="category-id" class="category">
                                     @if ($categories )
                                         @foreach ($categories as $cate )
-                                            <option value="{{ $cate->id }}" @if ($postEdit->categiory_id == $cate->id) selected @endif>{{ $cate->name }}</option>
+                                            <option value="{{ $cate->id }}" @if ($postEdit->category_id == $cate->id) selected @endif>{{ $cate->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label for="">{{ __('message.upload_image') }}</label>
                                 <div class="btn-upload-image">{{ __('message.upload_image') }}</div>
-                                <input type="file" name="image" class="hidden" id="upload-image">
+                                <input type="file" name="image" class="hidden" id="uploadImage">
                                 @error('image')
                                 <div class="error">{{ $message }}</div>
                                 @enderror

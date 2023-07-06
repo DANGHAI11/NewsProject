@@ -8,10 +8,10 @@ $(document).ready(function () {
     $(".noti-center").delay(4000).fadeOut(350);
 
     $(".btn-upload-image").click(function () {
-        $("#upload-image").click();
+        $("#uploadImage").click();
     });
 
-    $("#upload-image").change(function (e) {
+    $("#uploadImage").change(function (e) {
         let file = e.target.files[0];
         let fileType = file.type;
         if (fileType && fileType.indexOf("image") !== -1) {
@@ -23,7 +23,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#show-menu-profile").click(function (e) {
+    $("#showMenuProfile").click(function (e) {
         e.preventDefault();
         $(".menu-profile").toggle();
     });
@@ -57,7 +57,7 @@ $(document).ready(function () {
         });
     }
 
-    $("#select-category").change(function (e) {
+    $("#selectCategory").change(function (e) {
         if ($(this).val() == 0) {
             window.location.href = "/";
         } else {

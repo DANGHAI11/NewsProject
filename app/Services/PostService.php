@@ -12,42 +12,33 @@ use Illuminate\Support\Facades\Storage;
 
 class PostService
 {
-    protected $post;
-
-    /**
-     * PostService constructor.
-     */
-    public function __construct(Post $post)
-    {
-        $this->post = $post;
-    }
 
     public function getAll(array $arrSearch = []): LengthAwarePaginator
     {
-        $query = $this->post::active();
+        $query = Post::active();
 
         if (isset($arrSearch['user_id'])) {
             $query->where('user_id', Auth::id());
         }
         if (isset($arrSearch['category'])) {
-            $query->where('categiory_id', $arrSearch['category']);
+            $query->where('category_id', $arrSearch['category']);
         }
         if (isset($arrSearch['title'])) {
             $query->where('title', 'LIKE', '%' . $arrSearch['title'] . '%');
         }
         $query->with('user');
 
-        return $query->paginate($this->post::HOME_LIMIT);
+        return $query->paginate(Post::HOME_LIMIT);
     }
 
     public function getRelated(Post $postDetail): Collection
     {
-        $data = $this->post::where(['categiory_id' => $postDetail->categiory_id])
+        $data = Post::where(['category_id' => $postDetail->category_id])
             ->active()
             ->where('id', '!=', $postDetail->id)
             ->with('user')
             ->inRandomOrder()
-            ->limit($this->post::RELATED_LIMIT)
+            ->limit(Post::RELATED_LIMIT)
             ->get();
 
         return $data;
@@ -58,7 +49,7 @@ class PostService
         try {
             $data['user_id'] = Auth::id();
             $data['image'] = $this->getNameImage($data['image']);
-            $this->post::create($data);
+            Post::create($data);
 
             return true;
         } catch (Exception $ex) {
@@ -77,7 +68,7 @@ class PostService
 
             return $postUpdate->update([
                 'title' => $data['title'],
-                'categiory_id' => $data['categiory_id'],
+                'category_id' => $data['category_id'],
                 'content' => $data['content'],
                 'image' => $data['image'],
             ]);

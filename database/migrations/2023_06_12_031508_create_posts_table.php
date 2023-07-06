@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('categiory_id');
+            $table->bigInteger('category_id');
             $table->string('title');
             $table->text('content');
             $table->string('image');

@@ -7,15 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CategoryService
 {
-    protected $categories;
-
-    public function __construct(Category $categories)
-    {
-        $this->categories = $categories;
-    }
-
     public function getAllCategories(): Collection
     {
-        return $this->categories::where(['status' => $this->categories::STATUS_ACTIVE])->get();
+        return Category::where(['status' => Category::STATUS_ACTIVE])->get();
     }
 }

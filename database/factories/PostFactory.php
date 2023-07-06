@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => fake()->numberBetween($min = 1, $max = 8),
-            'categiory_id' => fake()->numberBetween($min = 1, $max = 4),
+            'category_id' => fake()->numberBetween($min = 1, $max = 4),
             'title' => fake()->name(),
             'content' => fake()->sentence(400),
             'image' => 'images/olwxy9X7F57d8tqyT5NiAEa9jx66js2XnO6I1OdI.jpg',

@@ -15,17 +15,17 @@
                         </div>
                         <div class="form-group">
                             <label for="category-id">{{ __('message.category') }}<span>*</span></label>
-                            <select name="categiory_id" id="category-id" class="category">
+                            <select name="category_id" id="category-id" class="category">
                                 @if ($categories )
                                     @foreach ($categories as $cate )
-                                        <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                                        <option value="{{ $cate->id }}" @if($cate->id == old('category_id')) selected @endif>{{ $cate->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="title-id">{{ __('message.title') }}<span>*</span></label>
-                            <input type="text" placeholder="{{ __('message.title') }}" id="title-id" name="title"/>
+                            <input type="text" placeholder="{{ __('message.title') }}" id="title-id" name="title" value="{{ old('title') }}"/>
                             @error('title')
                             <div class="error">{{ $message }}</div>
                             @enderror
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="">{{ __('message.upload_image') }}</label>
                             <div class="btn-upload-image">{{ __('message.upload_image') }}</div>
-                            <input type="file" name="image" class="hidden" id="upload-image">
+                            <input type="file" name="image" class="hidden" id="uploadImage">
                             @error('image')
                             <div class="error">{{ $message }}</div>
                             @enderror
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="content">{{ __('message.description') }}<span>*</span></label>
-                            <textarea name="content" id="content" placeholder="{{ __('message.description') }}"></textarea>
+                            <textarea name="content" id="content" placeholder="{{ __('message.description') }}">{{ old('content') }}</textarea>
                             @error('content')
                             <div class="error">{{ $message }}</div>
                             @enderror
