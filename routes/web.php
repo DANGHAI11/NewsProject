@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +32,16 @@ Route::middleware(['guest'])->group(function () {
     Route::get('changePassword/{token}', [AuthController::class, 'changePassword'])->name('change-password');
 });
 
-Route::group(['prefix' => 'post/', 'as' => 'post.'], function () {
+Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
     Route::get('create', [PostController::class, 'create'])->name('create');
     Route::post('create', [PostController::class, 'store'])->name('store');
     Route::get('update/{postEdit}', [PostController::class, 'edit'])->name('edit');
     Route::put('update/{postUpdate}', [PostController::class, 'update'])->name('update');
     Route::delete('delete/{postDelete}', [PostController::class, 'destroy'])->name('delete');
+});
+
+Route::group(['prefix' => 'comment', 'as' => 'comment.'], function () {
+    Route::post('{post}/create', [CommentController::class, 'store'])->name('store');
+    Route::put('{comment}/update', [CommentController::class, 'update'])->name('update');
+    Route::delete('{comment}/delete', [CommentController::class, 'destroy'])->name('delete');
 });

@@ -74,7 +74,7 @@
                         <div class="comment">
                             <div class="title-post-detail">{{ __('message.comment') }}</div>
                             @if(Auth::check())
-                                 <form class="form-comment">
+                                <form class="form-comment" method="POST" action="{{ route('comment.store', ['post' => $postDetail]) }}" >
                                     <div class="row">
                                         <div class="avatar-user">
                                             @if (Auth::user()->avatar)
@@ -84,18 +84,24 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="content" id="content-comment">
+                                            @csrf
+                                            <input
+                                                type="text"
+                                                name="content"
+                                                id="content-comment"
+                                                placeholder="Input your comment..."
+                                            >
                                             <button>{{ __('message.send') }}</button>
                                         </div>
                                     </div>
                                 </form>
                             @endif
                             <div class="comment-list">
-                                <div class="row user-commit">
+                                <div class="row user-comment">
                                     @if ($comments)
                                         @foreach ($comments as $comment)
                                         <div class="avatar-user">
-                                            @if ($comment->user->avatar)
+                                            @if (isset($comment->user->avatar))
                                                 <img src="{{ Vite::asset("public/storage/").$comment->user->avatar }}" alt="">
                                             @else
                                                 <img src="{{ Vite::asset('resources/images/avatar-user-comment.png') }}" alt="">
@@ -106,6 +112,28 @@
                                                 <div class="user-name">{{ $comment->user->name }}</div>
                                                 <div class="comment-user">{{ $comment->content }}</div>
                                                 <div class="time">{{ $comment->created_at->diffForHumans() }}</div>
+                                                @canany(['update','delete'], $comment)
+                                                    <div class="icon-comment">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 128 512">
+                                                            <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="button-comment">
+                                                        <div class="comment-edit">Edit</div>
+                                                        <button class="comment-delete" form="commentDelete{{ $comment->id }}" >Delete</button>
+                                                    </div>
+                                                    <form action="{{ route('comment.delete',['comment' => $comment]) }}" method="post" id="commentDelete{{ $comment->id }}">
+                                                        @method("DELETE")
+                                                        @csrf
+                                                        <button>Send</button>
+                                                    </form>
+                                                    <form action="{{ route('comment.update',['comment' => $comment]) }}" method="post" class="comment-update">
+                                                        @method("PUT")
+                                                        @csrf
+                                                        <textarea name="content" id="" placeholder="Input your comment..."></textarea>
+                                                        <button>Send</button>
+                                                    </form>
+                                                @endcan
                                             </div>
                                         </div>
                                         @endforeach
@@ -119,5 +147,7 @@
         </main>
     @endif
 @endsection
-
+@push('js')
+    <script src="{{ Vite::asset('resources/js/comment.js') }}"></script>
+@endpush
 @include("partials.popup",['postDelete' => $postDetail])
