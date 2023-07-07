@@ -32,6 +32,15 @@
         </div>
     </div>
 @endif
+@error('content')
+    <div class="noti-center">
+        <div class="noti-danger">
+            <i class="far fa-times-circle noti-shine"></i>
+            &nbsp; &nbsp;
+            <span>{{ $message }}</span>
+        </div>
+    </div>
+@enderror
 @if (Session::has('warning'))
     <div class="noti-center">
         <div class="noti-warning">
@@ -41,10 +50,11 @@
         </div>
     </div>
 @endif
+
 @include("partials.header")
 @yield("content")
 @include("partials.footer")
-@stack('main')
+@stack('js')
 @vite(['resources/js/main.js'])
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

@@ -71,16 +71,19 @@ const background = $(".background-mobile");
 const search = $(".header-right");
 let prevScrollpos = $(window).scrollTop();
 
-function searchMobile() {
+function searchMobile()
+{
     search.toggleClass("active");
 }
 
-function menuMobile() {
+function menuMobile()
+{
     menu.toggleClass("active");
     background.css("display", "block");
 }
 
-function removeMenuMobile() {
+function removeMenuMobile()
+{
     menu.removeClass("active");
     background.css("display", "none");
 }
