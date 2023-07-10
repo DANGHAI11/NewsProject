@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
     Route::get('update/{postEdit}', [PostController::class, 'edit'])->name('edit');
     Route::put('update/{postUpdate}', [PostController::class, 'update'])->name('update');
     Route::delete('delete/{postDelete}', [PostController::class, 'destroy'])->name('delete');
+    Route::post('like/{post}', [LikeController::class, 'like'])->name('like');
 });
 
 Route::group(['prefix' => 'comment', 'as' => 'comment.'], function () {

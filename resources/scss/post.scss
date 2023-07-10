@@ -269,6 +269,21 @@ main {
                         color: #747474;
                         margin-bottom: 55px;
                     }
+                    .relase-heart {
+                        transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+                        i {
+                            &.active {
+                                -webkit-text-fill-color: red;
+                                -webkit-text-stroke-width: 0px;
+                                -webkit-text-stroke: 0px #000000;
+                            }
+                            -webkit-text-fill-color: transparent;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke: 3px #000000;
+                            font-size: 2rem;
+                        }
+                        
+                    }
                 }
                 .title-post-detail {
                     font: normal 700 24px/35px "Noto Sans JP";
@@ -419,7 +434,8 @@ main {
                                         top: 20px;
                                         right: 24px;
                                         display: none;
-                                        div,button {
+                                        div,
+                                        button {
                                             font: normal normal 15px/20.27px "Noto Sans JP";
                                             width: 80px;
                                             height: 30px;
@@ -431,7 +447,7 @@ main {
                                             outline: none;
                                             border: none;
                                             cursor: pointer;
-                                            &:first-child{
+                                            &:first-child {
                                                 margin-bottom: 5px;
                                             }
                                         }
