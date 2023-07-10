@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\Post;
-use App\Services\LikeService;
-use Illuminate\Http\Request;
+use App\Services\User\LikeService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\Controller;
 
 class LikeController extends Controller
 {
