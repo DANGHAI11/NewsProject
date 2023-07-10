@@ -7,8 +7,10 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Services\CategoryService;
 use App\Services\CommentService;
+use App\Services\LikeService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,17 +20,21 @@ class PostController extends Controller
 
     protected $commentService;
 
+    protected $likeService;
+
     /**
      * PostController constructor.
      */
     public function __construct(
         CategoryService $categoryService,
         PostService $postService,
-        CommentService $commentService
+        CommentService $commentService,
+        LikeService $likeService
     ) {
         $this->categoryService = $categoryService;
         $this->postService = $postService;
         $this->commentService = $commentService;
+        $this->likeService = $likeService;
     }
 
     /**
@@ -78,15 +84,13 @@ class PostController extends Controller
      */
     public function show(Post $postDetail)
     {
-        if ($postDetail) {
-            return view('post.detail', [
-                'postDetail' => $postDetail,
-                'postRelated' => $this->postService->getRelated($postDetail),
-                'comments' => $this->commentService->getAllComment($postDetail->id),
-            ]);
-        }
-
-        return redirect()->route('home')->with('error', __('message.post_does_exist'));
+        return view('post.detail', [
+            'postDetail' => $postDetail,
+            'postRelated' => $this->postService->getRelated($postDetail),
+            'comments' => $this->commentService->getAllComment($postDetail->id),
+            'totalLike' => $this->likeService->totalLikePost($postDetail),
+            'statusLike' => $this->likeService->statusLike($postDetail->id, Auth::user()),
+        ]);
     }
 
     /**

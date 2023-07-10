@@ -50,7 +50,11 @@
                                 <img src="{{ Vite::asset("public/storage/").$postDetail->image }}" alt="{{ $postDetail->title }}">
                             </div>
                             <div class="content">{!! $postDetail->content !!}</div>
-                            <div class="relase-heart">{{ __('message.related_heart') }}</div>
+                            @if(Auth::check())
+                            <div class="relase-heart" data-url="{{ route('post.like', ['post' => $postDetail]) }}">
+                                <i class="fa-solid fa-heart @if($statusLike) active @endif "></i> <span>{{ $totalLike }}</span>
+                            </div>
+                            @endif
                         </div>
                         @if($postRelated)
                             <div class="related">
@@ -149,6 +153,6 @@
     @endif
 @endsection
 @push('js')
-    <script src="{{ Vite::asset('resources/js/comment.js') }}"></script>
+    @vite(['resources/js/like.js','resources/js/comment.js'])
 @endpush
 @include("partials.popup",['postDelete' => $postDetail])
