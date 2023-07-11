@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\LikeController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\User\CommentController;
+use App\Http\Controllers\User\LikeController;
+use App\Http\Controllers\User\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
