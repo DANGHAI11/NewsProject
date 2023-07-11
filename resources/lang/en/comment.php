@@ -10,5 +10,5 @@ return [
     'delete_error_comment' => 'Delete comment fails!',
 
     'text_comment' => 'Input your comment...',
-    'edit' => 'Edit'
+    'edit' => 'Edit',
 ];

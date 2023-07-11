@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Models\Comment;
 use Exception;
@@ -31,11 +31,11 @@ class CommentService
         }
     }
 
-    public function updateComment(array $data = [], object $comment): bool
+    public function updateComment(array $data, object $comment): bool
     {
         try {
             return $comment->update([
-                'content' => $data['content']
+                'content' => $data['content'],
             ]);
         } catch (Exception $ex) {
             return false;

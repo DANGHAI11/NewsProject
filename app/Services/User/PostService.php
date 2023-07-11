@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Models\Comment;
 use App\Models\Post;
@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PostService
@@ -16,18 +17,20 @@ class PostService
     {
         $query = Post::active();
 
-        if (isset($arrSearch['user_id'])) {
+        if (isset($arrSearch['check_user'])) {
             $query->where('user_id', Auth::id());
         }
+
         if (isset($arrSearch['category'])) {
             $query->where('category_id', $arrSearch['category']);
         }
+
         if (isset($arrSearch['title'])) {
             $query->where('title', 'LIKE', '%' . $arrSearch['title'] . '%');
         }
         $query->with('user');
 
-        return $query->paginate(Post::HOME_LIMIT);
+        return $query->paginate(Post::HOME_LIMIT)->withQueryString($arrSearch);
     }
 
     public function getRelated(Post $postDetail): Collection
@@ -79,9 +82,16 @@ class PostService
     public function deletePost(object $postDelete): bool
     {
         try {
+            DB::beginTransaction();
             Comment::where('post_id', $postDelete->id)->delete();
-            return $postDelete->delete();
+            $postDelete->likes()->detach();
+            $postDelete->delete();
+            DB::commit();
+
+            return true;
         } catch (Exception $ex) {
+            DB::rollBack();
+
             return false;
         }
     }

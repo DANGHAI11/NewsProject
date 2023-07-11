@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Http\Requests\CreatePostRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\User\CreatePostRequest;
+use App\Http\Requests\User\UpdatePostRequest;
 use App\Models\Post;
-use App\Services\CategoryService;
-use App\Services\CommentService;
-use App\Services\LikeService;
-use App\Services\PostService;
+use App\Services\User\CategoryService;
+use App\Services\User\CommentService;
+use App\Services\User\LikeService;
+use App\Services\User\PostService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -43,8 +43,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $dataSearch = [
-            'category' => $request->route('category_id'),
-            'title' => isset($request->title) ? $request->title : null,
+            'category' => $request->category,
+            'title' => $request->title,
         ];
 
         return view('post.index', [
@@ -89,7 +89,7 @@ class PostController extends Controller
             'postRelated' => $this->postService->getRelated($postDetail),
             'comments' => $this->commentService->getAllComment($postDetail->id),
             'totalLike' => $this->likeService->totalLikePost($postDetail),
-            'statusLike' => $this->likeService->statusLike($postDetail->id, Auth::user()),
+            'statusLike' => $this->likeService->statusLike($postDetail->id),
         ]);
     }
 

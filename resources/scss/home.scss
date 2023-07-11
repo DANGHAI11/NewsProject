@@ -25,14 +25,23 @@ body {
     width: 100%;
     padding: 0 101px 0 102px;
 }
-
+.user-body{
+    background-color: #212121;
+}
 @import "./header.scss";
 
 main {
     background: #ffffff;
     margin-top: 72.58px;
+    &.user-edit{
+        margin-top: 150px;
+        background-color: #212121;
+    }
     .wrap {
         .container {
+            .row{
+                @import "./update_profile.scss";
+            }
             .title-category {
                 @include center();
                 justify-content: space-between;
@@ -252,3 +261,4 @@ footer {
 }
 
 @import "./responsive.scss";
+@import './popup.scss'

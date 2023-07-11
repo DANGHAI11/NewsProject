@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Http\Requests\CommentRequest;
-use App\Http\Requests\UpdateCommentRequest;
+use App\Http\Requests\User\CommentRequest;
+use App\Http\Requests\User\UpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Services\CommentService;
+use App\Services\User\CommentService;
+use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {

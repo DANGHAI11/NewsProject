@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Models\Post;
 use App\Models\User;
@@ -14,10 +14,10 @@ class LikeService
         return $post->likes()->count();
     }
 
-    public function statusLike(int $postId, object $user): User|Post|null
+    public function statusLike(int $postId): User|Post|null
     {
         try {
-            return $user->likes()->where('post_id', $postId)->first();
+            return Auth::check() ? Auth::user()->likes()->where('post_id', $postId)->first() : null;
         } catch (Exception $ex) {
             return false;
         }
@@ -27,12 +27,13 @@ class LikeService
     {
         try {
             $user = Auth::user();
-            if ($this->statusLike($postId, $user)) {
+            if ($this->statusLike($postId)) {
                 $user->likes()->detach($postId);
+
                 return true;
             }
-
             $user->likes()->attach($postId);
+
             return true;
         } catch (Exception $ex) {
             return false;

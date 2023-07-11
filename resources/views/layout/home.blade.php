@@ -11,7 +11,7 @@
     @vite(['resources/scss/home.scss', 'resources/css/notification.css'])
 </head>
 
-<body>
+<body @if(Route::is('user.edit')) class="user-body" @endif>
 @if(Session::has('success') )
     <div class="noti-center">
         <div class="noti-check">
@@ -42,6 +42,7 @@
 @include("partials.header")
 @yield("content")
 @include("partials.footer")
+@stack('js')
 @vite('resources/js/main.js')
 </body>
 </html>

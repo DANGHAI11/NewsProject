@@ -4,13 +4,13 @@
         <div class="wrap">
             <div class="container">
                 <div class="title-category row">
-                    <div class="title">{{ __('message.list_blog') }}</div>
+                    <div class="title">{{ __('profile.my_post') }}</div>
                     <div class="category">
                         <select id="selectCategory">
                             <option value>{{ __('message.category') }}</option>
                             @if($categories)
                                 @foreach ($categories as $cate)
-                                    <option value="{{ route('home', ['category' => $cate->id]) }}" @if($cate->id == request()->category) selected @endif>{{ $cate->name }}</option>
+                                    <option value="{{ route('user.index', ['category_id' => $cate->id]) }}" @if($cate->id == request()->route()->category_id) selected @endif>{{ $cate->name }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -116,4 +116,5 @@
             </div>
         </div>
     </main>
+
 @endsection

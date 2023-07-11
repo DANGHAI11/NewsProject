@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Services\LikeService;
-use Illuminate\Http\Request;
+use App\Services\User\LikeService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
@@ -20,8 +20,9 @@ class LikeController extends Controller
     public function like(Post $post)
     {
         if ($this->likeService->handleLike($post->id)) {
-            $statusLike = $this->likeService->statusLike($post->id, Auth::user());
+            $statusLike = $this->likeService->statusLike($post->id);
             $totalLike = $this->likeService->totalLikePost($post);
+
             return Response::json([
                 'totalLike' => $totalLike,
                 'statusLike' => $statusLike,

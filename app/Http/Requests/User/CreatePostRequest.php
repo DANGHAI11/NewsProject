@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePostRequest extends FormRequest
+class CreatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,7 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required',
+            'image' => 'required|image|max:4096',
         ];
     }
 }

@@ -1,5 +1,5 @@
 <header>
-    @if(Route::is('home') || Route::is('search.title') || Route::is('search.category'))
+    @if(Route::is('home') || Route::is('search.title') || Route::is('search.category') || Route::is('user.index'))
         <div class="background-image">
             <img src="{{ Vite::asset('resources/images/img_banner.png') }}" alt="banner"/>
         </div>
@@ -64,7 +64,11 @@
                         <img src="{{ Vite::asset('resources/images/logo.png') }}" alt/>
                     </a>
                     <div class="form-search">
-                        <form action={{ route('search.title') }} method="GET">
+                        @if (Route::is('user.index'))
+                            <form action="{{ route('user.index') }}" method="GET">
+                        @else
+                            <form action="{{ route('home') }}" method="GET">
+                        @endif
                             <input type="text" placeholder="Search blog" class="news-search" name="title" value="{{ request()->title }}"/>
                             <button>
                                 <svg
@@ -113,10 +117,10 @@
                                         </li>
                                     @else
                                         <li class="menu-profile-item">
-                                            <a href="#" class="menu-profile-item-link">{{ __('message.my_blogs') }}</a>
+                                            <a href="{{ route('user.index') }}" class="menu-profile-item-link">{{ __('message.my_blogs') }}</a>
                                         </li>
                                         <li class="menu-profile-item">
-                                            <a href class="menu-profile-item-link">{{ __('message.profile') }}</a>
+                                            <a href="{{ route('user.edit') }}" class="menu-profile-item-link">{{ __('message.profile') }}</a>
                                         </li>
                                     @endif
                                 </ul>

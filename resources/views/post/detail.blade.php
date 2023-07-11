@@ -39,7 +39,8 @@
                                                     <div class="approve_active">{{ __('message.approved') }}</div>
                                                 @endif
                                                 <a class="approve_active edit-post" href="{{ route('post.edit',['postEdit' => $postDetail]) }}">
-                                                    {{ __('message.edit_blog') }}</a>
+                                                    {{ __('message.edit_blog') }}
+                                                </a>
                                                 <div class="delete-post">{{ __('message.delete_blog') }}</div>
                                             </div>
                                         @endif
@@ -49,12 +50,10 @@
                             <div class="image-post">
                                 <img src="{{ Vite::asset("public/storage/").$postDetail->image }}" alt="{{ $postDetail->title }}">
                             </div>
-                            <div class="content">{!! $postDetail->content !!}</div>
-                            @if(Auth::check())
-                            <div class="relase-heart" data-url="{{ route('post.like', ['post' => $postDetail]) }}">
-                                <i class="fa-solid fa-heart @if($statusLike) active @endif "></i> <span>{{ $totalLike }}</span>
+                            <div class="content">{!! nl2br(e($postDetail->content)) !!}</div>
+                            <div class="relase-heart" @if(Auth::check()) data-url="{{ route('post.like', ['post' => $postDetail]) }}" @endif>
+                                <i class="fa-solid fa-heart @if($statusLike) active @endif"></i> <span>{{ $totalLike }}</span>
                             </div>
-                            @endif
                         </div>
                         @if($postRelated)
                             <div class="related">

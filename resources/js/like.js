@@ -1,19 +1,18 @@
-const relaseHeart = $(".relase-heart");
-const relaseHeartTotal = $(".relase-heart span");
-const relaseHeartStatus = $(".relase-heart i");
+const releaseHeart = $(".relase-heart");
+const releaseHeartTotal = $(".relase-heart span");
+const releaseHeartStatus = $(".relase-heart i");
 
-relaseHeart.click(function () {
-    $.ajax({
-        url: $(this).data("url"),
-        type: "POST",
-        dataType: "json",
-        success: function (response) {
-            relaseHeartTotal.text(response.totalLike);
-            if (response.statusLike) {
-                relaseHeartStatus.addClass("active");
-            } else {
-                relaseHeartStatus.removeClass("active");
-            }
-        },
-    });
+releaseHeart.click(function () {
+    let urlLike = $(this).data("url");
+    if (urlLike) {
+        $.ajax({
+            url: urlLike,
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                releaseHeartTotal.text(response.totalLike);
+                response.statusLike ? releaseHeartStatus.addClass("active") : releaseHeartStatus.removeClass("active");
+            },
+        });
+    }
 });
