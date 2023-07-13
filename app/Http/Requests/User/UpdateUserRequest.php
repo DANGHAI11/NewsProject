@@ -11,7 +11,11 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
+<<<<<<< HEAD
         return true;
+=======
+        return false;
+>>>>>>> 56e89330d3b3569c3006abd645fce6fa6a371612
     }
 
     /**
