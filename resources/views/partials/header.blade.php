@@ -116,11 +116,7 @@
                                     </li>
                                     @if (Auth::user()->role === \App\Models\User::ROLE_ADMIN)
                                         <li class="menu-profile-item">
-<<<<<<< HEAD
                                             <a href="{{ route('admin.index') }}" class="menu-profile-item-link">{{ __('message.admin') }}</a>
-=======
-                                            <a href class="menu-profile-item-link">{{ __('message.admin') }}</a>
->>>>>>> 065f77d (create first)
                                         </li>
                                     @else
                                         <li class="menu-profile-item">
