@@ -69,6 +69,9 @@
                         @else
                             <form action="{{ route('home') }}" method="GET">
                         @endif
+                            @if (request()->category)
+                                <input type="hidden" name="category" value="{{ request()->category }}"/>
+                            @endif
                             <input type="text" placeholder="Search blog" class="news-search" name="title" value="{{ request()->title }}"/>
                             <button>
                                 <svg
@@ -113,7 +116,7 @@
                                     </li>
                                     @if (Auth::user()->role === \App\Models\User::ROLE_ADMIN)
                                         <li class="menu-profile-item">
-                                            <a href class="menu-profile-item-link">{{ __('message.admin') }}</a>
+                                            <a href="{{ route('admin.index') }}" class="menu-profile-item-link">{{ __('message.admin') }}</a>
                                         </li>
                                     @else
                                         <li class="menu-profile-item">

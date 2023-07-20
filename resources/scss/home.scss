@@ -175,75 +175,7 @@ main {
                     }
                 }
             }
-            .pagination {
-                @include center;
-                margin-bottom: 96px;
-                ul {
-                    @include center;
-                    list-style: none;
-                    li {
-                        margin-right: 10px;
-                        width: 32px;
-                        height: 32px;
-                        &:hover {
-                            @include wh(32px, 32px);
-                            background: #ffe4e4;
-                            border-radius: 100%;
-                            a {
-                                color: #c40000;
-                            }
-                        }
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                        &.first {
-                            @include wh(40px, 40px);
-                            border-radius: 50%;
-                            background: #c40000;
-                            a {
-                                color: #ffffff;
-                                @include center;
-                                margin-top: 0px;
-                                @include wh(100%, 100%);
-                            }
-                        }
-                        &.end {
-                            @include wh(40px, 40px);
-                            border-radius: 100%;
-                            background: #c40000;
-                            a {
-                                color: #ffffff;
-                                @include center;
-                                margin-top: 0px;
-                                @include wh(100%, 100%);
-                            }
-                        }
-                        &.active {
-                            @include wh(32px, 32px);
-                            background: #ffe4e4;
-                            border-radius: 50%;
-                            a {
-                                color: #c40000;
-                            }
-                        }
-                        a {
-                            text-decoration: none;
-                            font: normal 700 18px/0 "SVN-Gilroy";
-                            color: #211e3b;
-                            border-radius: 100%;
-                            -webkit-border-radius: 100%;
-                            -moz-border-radius: 100%;
-                            -ms-border-radius: 100%;
-                            -o-border-radius: 100%;
-                            @include center();
-                            @include wh(100%, 100%);
-                        }
-                        &.disable {
-                            background: #e5e5e5;
-                        }
-                    }
-                }
-            }
+            @import "./pagination.scss";
         }
     }
 }

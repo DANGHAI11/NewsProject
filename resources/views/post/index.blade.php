@@ -10,7 +10,11 @@
                             <option value>{{ __('message.category') }}</option>
                             @if($categories)
                                 @foreach ($categories as $cate)
-                                    <option value="{{ route('home', ['category' => $cate->id]) }}" @if($cate->id == request()->category) selected @endif>{{ $cate->name }}</option>
+                                    @if(request()->title)
+                                        <option value="{{ route('home', ['title' => request()->title, 'category' => $cate->id]) }}" @if($cate->id == request()->category) selected @endif>{{ $cate->name }}</option>
+                                    @else
+                                        <option value="{{ route('home', ['category' => $cate->id]) }}" @if($cate->id == request()->category) selected @endif>{{ $cate->name }}</option>
+                                    @endif
                                 @endforeach
                             @endif
                         </select>
@@ -112,7 +116,7 @@
                         @endforeach
                     </div>
                 </div>
-                {{ $posts->links('partials.pagination', ['posts' => $posts]) }}
+                {{ $posts->links('partials.pagination', ['data' => $posts]) }}
             </div>
         </div>
     </main>

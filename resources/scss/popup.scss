@@ -1,4 +1,15 @@
 .popup {
+    &.admin{
+        display: block;
+        .popup-content{
+            height: auto;
+            top: 100px;
+            left: calc(50% - (542px / 2));
+            .popup-body{
+                padding: 20px;
+            }
+        }
+    }
     position: fixed;
     top: 0;
     left: 0;

@@ -16,12 +16,16 @@
                         <div class="form-group">
                             <label for="category-id">{{ __('message.category') }}<span>*</span></label>
                             <select name="category_id" id="category-id" class="category">
-                                @if ($categories )
+                                @if ($categories)
+                                    <option value="">{{ __('message.select') }}</option>
                                     @foreach ($categories as $cate )
                                         <option value="{{ $cate->id }}" @if($cate->id == old('category_id')) selected @endif>{{ $cate->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
+                            @error('category_id')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="title-id">{{ __('message.title') }}<span>*</span></label>

@@ -27,5 +27,8 @@
         <div class="form-button row">
             <button>{{ __('profile.change_password') }}</button>
         </div>
+        <div class="form-rq-link row">
+            <a href="{{ route('home') }}">Home</a>
+        </div>  
     </form>
 @endsection

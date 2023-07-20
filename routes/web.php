@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\LikeController;
@@ -56,4 +60,31 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::delete('delete/{user}', [UserController::class, 'delete'])->name('delete');
     Route::get('editPassword', [UserController::class, 'editPassword'])->name('edit.password');
     Route::post('updatePassword/{user}', [UserController::class, 'updatePassword'])->name('update.password');
+});
+
+Route::group(['middleware' => 'checkAdmin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('', [AdminController::class, 'index'])->name('index');
+    Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
+        Route::get('', [AdminPostController::class, 'index'])->name('index');
+        Route::put('approved/{post}', [AdminPostController::class, 'approved'])->name('approved');
+        Route::put('approvedAll', [AdminPostController::class, 'approvedAll'])->name('approved.all');
+        Route::delete('delete/{post}', [AdminPostController::class, 'destroy'])->name('delete');
+    });
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('', [AdminUserController::class, 'index'])->name('index');
+        Route::put('activeAll', [AdminUserController::class, 'updateStatusAll'])->name('active.all');
+        Route::put('active/{user}', [AdminUserController::class, 'updateStatus'])->name('active');
+        Route::get('view/{user}', [AdminUserController::class, 'getViewUpdate'])->name('edit');
+        Route::put('update/{user}', [AdminUserController::class, 'updateProfile'])->name('update');
+        Route::get('viewDelete/{user}', [AdminUserController::class, 'getViewDelete'])->name('view.delete');
+        Route::delete('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+        Route::get('', [CategoryController::class, 'index'])->name('index');
+        Route::get('create', [CategoryController::class, 'create'])->name('create');
+        Route::post('store', [CategoryController::class, 'store'])->name('store');
+        Route::get('edit/{category}', [CategoryController::class, 'edit'])->name('edit');
+        Route::put('update/{category}', [CategoryController::class, 'update'])->name('update');
+        Route::delete('delete/{category}', [CategoryController::class, 'delete'])->name('delete');
+    });
 });
