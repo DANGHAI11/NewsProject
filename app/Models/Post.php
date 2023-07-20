@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\HasMany;
+=======
+>>>>>>> 065f77d94832acdc06eadb842e60fc76be41c53c
 
 class Post extends Model
 {

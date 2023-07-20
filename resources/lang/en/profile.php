@@ -16,6 +16,5 @@ return [
     'update_profile_error' => 'Update profile fails',
     'delete_profile_success' => 'Delete profile successfully',
     'delete_profile_error' => 'Delete profile fails',
-
     'my_post' => 'My post'
 ];

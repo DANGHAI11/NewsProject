@@ -116,7 +116,11 @@
                         @endforeach
                     </div>
                 </div>
+<<<<<<< HEAD
                 {{ $posts->links('partials.pagination', ['data' => $posts]) }}
+=======
+                {{ $posts->links('partials.pagination', ['posts' => $posts]) }}
+>>>>>>> 065f77d94832acdc06eadb842e60fc76be41c53c
             </div>
         </div>
     </main>
