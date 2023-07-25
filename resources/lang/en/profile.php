@@ -2,7 +2,7 @@
 
 return [
     'change_password' => 'Change password',
-    'password_old' => 'Password old',
+    'password_old' => 'Old password ',
     'update_profile' => 'Update profile',
     'update' => 'Update ',
     'phone' => 'Phone',

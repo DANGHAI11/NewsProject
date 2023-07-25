@@ -177,11 +177,13 @@
                                     justify-content: space-between;
                                     margin-top: 15px;
                                     .approve_active {
+                                        width: 90px;
                                         height: 28px;
                                         font-size: 13px;
                                         line-height: 18px;
                                     }
                                     .delete-post {
+                                        width: 90px;
                                         height: 28px;
                                         font-size: 13px;
                                         line-height: 18px;
@@ -219,6 +221,52 @@
                                             color: #000000;
                                             @include cutText();
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .comment {
+                        .comment-list {
+                            .row {
+                                .content {
+                                    .content-card 
+                                    {
+                                        form {
+                                            width: calc(100% + 48px + 17px);
+                                            margin-left: calc(-48px - 17px);
+                                            &.comment-update{
+                                                button{
+                                                    position: unset;
+                                                }
+                                                textarea{
+                                                    width: calc(100% - 60px - 5px);
+                                                    height: 55px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .form-comment {
+                            .row {
+                                .form-group {
+                                    flex-wrap: wrap;
+                                    justify-content: space-between;
+                                    
+                                    input {
+                                        font: normal 500 14px/18px "Noto Sans JP";
+                                        width: calc(100% - 60px - 5px);
+                                        height: 58px;
+                                        padding: 10px;
+                                    }
+                                    button {
+                                        font: normal 500 14px/18px "Noto Sans JP";
+                                        bottom: 0px;
+                                        right: 0;
+                                        width: 60px;
+                                        height: 30px;
                                     }
                                 }
                             }

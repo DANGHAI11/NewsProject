@@ -15,7 +15,7 @@ class PostService
 {
     public function getAll(array $arrSearch = []): LengthAwarePaginator
     {
-        $query = Post::active();
+        $query = Post::orderBy('created_at', 'desc');
 
         if (isset($arrSearch['check_user'])) {
             $query->where('user_id', Auth::id());
@@ -27,6 +27,9 @@ class PostService
 
         if (isset($arrSearch['title'])) {
             $query->where('title', 'LIKE', '%' . $arrSearch['title'] . '%');
+        }
+        if (isset($arrSearch['guest'])) {
+            $query->active();
         }
         $query->with('user');
 

@@ -11,4 +11,8 @@ return [
 
     'text_comment' => 'Input your comment...',
     'edit' => 'Edit',
+
+    'latest' => 'Latest',
+    'oldest' => 'Oldest',
+    'load_more' => 'Load more'
 ];

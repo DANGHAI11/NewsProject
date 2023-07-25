@@ -27489,7 +27489,7 @@ table.dataTable tbody td.select-checkbox:after {
 }
 
 .swal2-modal {
-  min-height: 315px;
+  min-height: 350px;
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: center;

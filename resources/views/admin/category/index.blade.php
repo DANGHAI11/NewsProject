@@ -8,7 +8,7 @@
                     <h4 class="card-title col-2 m-0">{{ __('admin.list_categories') }} ({{ $categories->total() }})</h4>
                     <form action="" method="get" class="row m-0 col-7 w-100">
                         <div class="form-group m-0 col-5">
-                            <input class="form-control" type="text" name="name" placeholder="name category" value="{{ request()->name }}">
+                            <input class="form-control" type="text" name="name" placeholder="Category name" value="{{ request()->name }}">
                         </div>
                         <select class="form-control m-0 col-2 mr-3" name="limit_page" id="limitPage" >
                             @foreach ($pageLimit as $value)
@@ -46,10 +46,10 @@
                                                     <a href="{{ route('admin.category.edit', ['category' => $category]) }}" class="icon badge-success"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 </div>
                                                 <div class="col-4">
-                                                    <form action="{{ route('admin.category.delete', ['category' => $category]) }}" method="post">
+                                                    <form action="{{ route('admin.category.delete', ['category' => $category]) }}" method="post" id="formCategoryDelete">
                                                         @csrf
                                                         @method("DELETE")
-                                                        <button class="icon badge-danger"><i class="fa-solid fa-trash"></i></button>
+                                                        <button class="icon badge-danger" id="categoryDelete"><i class="fa-solid fa-trash"></i></button>
                                                     </form>
                                                 </div>
                                             </div>

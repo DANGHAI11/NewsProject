@@ -33,7 +33,7 @@ return [
     'approved_success' => 'Approved successfully',
     'approved_error' => 'Approved fails',
     'approved_all_success' => 'Approved all successfully',
-    'approved_all_error' => 'Approved all fails',
+    'approved_all_error' => 'Approved all fails or all posts approved',
     'create_category_success' => 'Create category successfully',
     'create_category_error' => 'Create category fails!',
     'update_category_success' => 'Update category successfully!',
@@ -45,4 +45,7 @@ return [
     'edit_category' => 'Edit category',
     'text_footer' => 'Hải đẹp trai(Developer)',
     'admin_error' => 'You are not an administrator',
+
+    'approved' => 'Approved',
+    'not_approved' => 'Not approved',
 ];

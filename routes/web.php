@@ -26,7 +26,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('', [PostController::class, 'index'])->name('home');
 Route::get('searchByCategory', [PostController::class, 'index'])->name('search.category');
 Route::get('searchByTitle', [PostController::class, 'index'])->name('search.title');
-Route::get('post/{postDetail}/detail', [PostController::class, 'show'])->name('detail');
+Route::get('postsDetail/{postDetail}', [PostController::class, 'show'])->name('detail')->middleware('checkDetail');
 Route::middleware(['guest'])->group(function () {
     Route::get('register', [AuthController::class, 'viewRegister'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('post.register');
@@ -38,7 +38,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('changePassword/{token}', [AuthController::class, 'changePassword'])->name('change.password');
 });
 
-Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
+Route::group(['prefix' => 'posts', 'as' => 'post.'], function () {
     Route::get('create', [PostController::class, 'create'])->name('create');
     Route::post('create', [PostController::class, 'store'])->name('store');
     Route::get('update/{postEdit}', [PostController::class, 'edit'])->name('edit');
@@ -47,13 +47,14 @@ Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
     Route::post('like/{post}', [LikeController::class, 'like'])->name('like');
 });
 
-Route::group(['prefix' => 'comment', 'as' => 'comment.'], function () {
+Route::group(['prefix' => 'comments', 'as' => 'comment.'], function () {
     Route::post('create', [CommentController::class, 'store'])->name('store');
     Route::put('update/{comment}', [CommentController::class, 'update'])->name('update');
     Route::delete('delete/{comment}', [CommentController::class, 'destroy'])->name('delete');
+    Route::get('viewMore', [CommentController::class, 'renderComment'])->name('view.more');
 });
 
-Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+Route::group(['prefix' => 'users', 'as' => 'user.'], function () {
     Route::get('', [UserController::class, 'index'])->name('index');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
     Route::put('update/{user}', [UserController::class, 'update'])->name('update');
@@ -64,13 +65,13 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
 Route::group(['middleware' => 'checkAdmin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('', [AdminController::class, 'index'])->name('index');
-    Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
+    Route::group(['prefix' => 'posts', 'as' => 'post.'], function () {
         Route::get('', [AdminPostController::class, 'index'])->name('index');
         Route::put('approved/{post}', [AdminPostController::class, 'approved'])->name('approved');
         Route::put('approvedAll', [AdminPostController::class, 'approvedAll'])->name('approved.all');
         Route::delete('delete/{post}', [AdminPostController::class, 'destroy'])->name('delete');
     });
-    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::group(['prefix' => 'users', 'as' => 'user.'], function () {
         Route::get('', [AdminUserController::class, 'index'])->name('index');
         Route::put('activeAll', [AdminUserController::class, 'updateStatusAll'])->name('active.all');
         Route::put('active/{user}', [AdminUserController::class, 'updateStatus'])->name('active');
@@ -79,7 +80,7 @@ Route::group(['middleware' => 'checkAdmin', 'prefix' => 'admin', 'as' => 'admin.
         Route::get('viewDelete/{user}', [AdminUserController::class, 'getViewDelete'])->name('view.delete');
         Route::delete('delete/{user}', [AdminUserController::class, 'delete'])->name('delete');
     });
-    Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+    Route::group(['prefix' => 'categories', 'as' => 'category.'], function () {
         Route::get('', [CategoryController::class, 'index'])->name('index');
         Route::get('create', [CategoryController::class, 'create'])->name('create');
         Route::post('store', [CategoryController::class, 'store'])->name('store');

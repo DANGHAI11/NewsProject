@@ -8,7 +8,7 @@
                     <h4 class="card-title col-md-2 m-0">{{ __('admin.list_post') }} ({{ $posts->total() }})</h4>
                     <form action="" method="get" class="row m-0 col-md-8 w-100">
                         <div class="form-group m-0 col-md-3 px-2">
-                            <input class="form-control p-1" type="text" name="title" placeholder="title" value="{{ request()->title }}">
+                            <input class="form-control p-1" type="text" name="title" placeholder="Title" value="{{ request()->title }}">
                         </div>
                         <div class="form-group m-0 col-md-1 p-0 pr-2">
                             <input class="form-control p-1" type="text" name="id" placeholder="ID" value="{{ request()->id }}">
@@ -27,18 +27,18 @@
                         <div class="form-group m-0 col-md-3 px-1">
                             <select class="form-control" name="status" id="">
                                 <option value="all" @if(request()->status == 'all') selected @endif>All</option>
-                                <option value={{ \App\Models\Post::STATUS_ACTIVE }} @if(request()->status == \App\Models\Post::STATUS_ACTIVE) selected @endif>{{ __('admin.active') }}</option>
-                                <option value={{ \App\Models\Post::STATUS_INACTIVE }} @if(request()->status == \App\Models\Post::STATUS_INACTIVE) selected @endif>{{ __('admin.inactive') }}</option>
+                                <option value={{ \App\Models\Post::STATUS_ACTIVE }} @if(request()->status == \App\Models\Post::STATUS_ACTIVE) selected @endif>{{ __('admin.approved') }}</option>
+                                <option value={{ \App\Models\Post::STATUS_INACTIVE }} @if(request()->status == \App\Models\Post::STATUS_INACTIVE) selected @endif>{{ __('admin.not_approved') }}</option>
                             </select>
                         </div>
                         <div class="form-group m-0 col-md-1 p-0">
                             <button class="btn btn-primary">Search</button>
                         </div>
                     </form>
-                    <form action="{{ route('admin.post.approved.all') }}" method="post" class="row col-md-2 justify-content-end align-content-end m-0">
+                    <form action="{{ route('admin.post.approved.all') }}" method="post" class="row col-md-2 justify-content-end align-content-end m-0" id="formApprovedAll">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-success">{{ __('admin.approved_all') }}</button>
+                        <button class="btn btn-success" id="approvedAll">{{ __('admin.approved_all') }}</button>
                     </form>
                 </div>
             <div class="table-responsive">
@@ -68,9 +68,9 @@
                                             @csrf
                                             @method("PUT")
                                             @if($post->status === \App\Models\Post::STATUS_INACTIVE)
-                                                <button class="btn-approved badge badge-danger">{{ __('admin.inactive') }}</button>
+                                                <button class="btn-approved badge badge-danger">{{ __('admin.not_approved') }}</button>
                                             @else
-                                                <button class="btn-approved badge badge-success">{{ __('admin.active') }}</button>
+                                                <button class="btn-approved badge badge-success">{{ __('admin.approved') }}</button>
                                             @endif
                                         </form>
                                     </td>
@@ -93,10 +93,10 @@
                                                 <a href="{{ route('post.edit', ['postEdit' => $post]) }}" target="_blank" class="icon badge-success"><i class="fa-solid fa-pen-to-square"></i></a>
                                             </div>
                                             <div class="col-4">
-                                                <form action="{{ route('admin.post.delete', ['post' => $post]) }}" method="post">
+                                                <form action="{{ route('admin.post.delete', ['post' => $post]) }}" method="post" id="formPostDelete">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button class="icon badge-danger"><i class="fa-solid fa-trash"></i></button>
+                                                    <button class="icon badge-danger" id="postDelete"><i class="fa-solid fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </div>

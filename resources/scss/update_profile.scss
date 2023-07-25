@@ -19,7 +19,7 @@
         overflow: hidden;
         border-radius: 50%;
         img {
-            z-index: 100;
+            z-index: 90;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -194,7 +194,7 @@
             &:hover {
                 cursor: pointer;
                 scale: 1.1;
-                background-color: black;
+                background-color: #858585;
             }
             &:hover .github {
                 fill: white;

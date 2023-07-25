@@ -45,6 +45,7 @@ class PostController extends Controller
         $dataSearch = [
             'category' => $request->category,
             'title' => $request->title,
+            'guest' => true
         ];
 
         return view('post.index', [
@@ -73,7 +74,7 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
         $result = $this->postService->createPost($request->all());
         if ($result) {
-            return redirect()->route('post.create')->with('success', __('message.success_create_post'));
+            return redirect()->route('user.index')->with('success', __('message.success_create_post'));
         }
 
         return redirect()->route('post.create')->with('error', __('message.error_create_post'));
@@ -115,7 +116,7 @@ class PostController extends Controller
         $data = $request->all();
         $result = $this->postService->updatePost($data, $postUpdate);
         if ($result) {
-            return redirect()->back()->with('success', __('message.update_success'));
+            return redirect()->route('user.index')->with('success', __('message.update_success'));
         }
 
         return redirect()->back()->with('error', __('message.update_error'));
