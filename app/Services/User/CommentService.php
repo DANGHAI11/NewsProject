@@ -5,7 +5,6 @@ namespace App\Services\User;
 use App\Models\Comment;
 use App\Models\Post;
 use Exception;
-
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +15,7 @@ class CommentService
         $query = Comment::where('post_id', $postId)->with('user');
         $order = $dataSearch['order'] ?? 'desc';
         $query->orderBy('created_at', $order);
-        if(isset($dataSearch['count']))
-        {
+        if (isset($dataSearch['count'])) {
             return $query->count();
         }
 

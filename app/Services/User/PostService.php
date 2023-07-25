@@ -28,7 +28,7 @@ class PostService
         if (isset($arrSearch['title'])) {
             $query->where('title', 'LIKE', '%' . $arrSearch['title'] . '%');
         }
-        if(isset($arrSearch['guest'])) {
+        if (isset($arrSearch['guest'])) {
             $query->active();
         }
         $query->with('user');

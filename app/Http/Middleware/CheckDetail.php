@@ -19,7 +19,11 @@ class CheckDetail
     public function handle(Request $request, Closure $next): Response
     {
         $post = $request->route('postDetail');
-        if((Auth::check() && (Auth::user()->role == User::ROLE_ADMIN || Auth::user()->id == $post->user_id)) || $post->status === Post::STATUS_ACTIVE) {
+        $user = Auth::user();
+        if (
+            (Auth::check() && ($user->role === User::ROLE_ADMIN || $user->id === $post->user_id)) ||
+            $post->status === Post::STATUS_ACTIVE
+        ) {
             return $next($request);
         }
 

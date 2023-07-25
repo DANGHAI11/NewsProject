@@ -37,7 +37,7 @@ class CommentController extends Controller
         return Response::json([
             'htmlComment' => '',
             'message' => __('comment.create_error_comment'),
-        ], 400);
+        ], 500);
     }
 
     public function update(UpdateCommentRequest $request, Comment $comment)
@@ -49,11 +49,11 @@ class CommentController extends Controller
                 'message' => __('comment.update_success_comment'),
             ], 200);
         }
-        
+
         return Response::json([
             'content' => "",
             'message' => __('comment.update_error_comment'),
-        ], 400);
+        ], 500);
     }
 
     public function destroy(Comment $comment)
@@ -72,8 +72,7 @@ class CommentController extends Controller
             'order' => $request->order,
         ];
         $htmlComment = view('partials.comment', [
-            'comments' => $this->commentService->getAllComment($request->post_id, $dataSearch),
-            'message' => ''
+            'comments' => $this->commentService->getAllComment($request->post_id, $dataSearch)
         ])->render();
 
         return Response::json([
