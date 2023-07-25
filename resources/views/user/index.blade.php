@@ -4,7 +4,7 @@
         <div class="wrap">
             <div class="container">
                 <div class="title-category row">
-                    <div class="title">{{ __('profile.my_post') }}</div>
+                    <div class="title">{{ __('profile.my_post') }} ({{ $posts->total() }})</div>
                     <div class="category">
                         <select id="selectCategory">
                             <option value>{{ __('message.category') }}</option>
@@ -116,7 +116,7 @@
                         @endforeach
                     </div>
                 </div>
-                {{ $posts->links('partials.pagination', ['posts' => $posts]) }}
+                {{ $posts->links('partials.pagination', ['data' => $posts]) }}
             </div>
         </div>
     </main>

@@ -8,7 +8,7 @@
                     <h4 class="card-title col-2 m-0">{{ __('admin.list_user') }} ({{ $users->total() }})</h4>
                     <form action="" method="get" class="row m-0 col-8 w-100">
                         <div class="form-group m-0 col-3">
-                            <input class="form-control" type="text" name="name" placeholder="name or email" value="{{ request()->name }}">
+                            <input class="form-control" type="text" name="name" placeholder="Name or email" value="{{ request()->name }}">
                         </div>
                         <select class="form-control m-0 col-2 mr-3" name="role">
                             <option value="all" @if(request()->role == "all") selected @endif>All</option>
@@ -31,10 +31,10 @@
                             <button class="btn btn-primary">{{ __('admin.search') }}</button>
                         </div>
                     </form>
-                    <form action="{{ route('admin.user.active.all') }}" method="post" class="row col-2 justify-content-end align-content-end m-0">
+                    <form action="{{ route('admin.user.active.all') }}" method="post" class="row col-2 justify-content-end align-content-end m-0" id="formUserActiveAll">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-success">{{ __('admin.active_all') }}</button>
+                        <button class="btn btn-success" id="userActiveAll">{{ __('admin.active_all') }}</button>
                     </form>
                 </div>
             <div class="table-responsive">
@@ -107,7 +107,6 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        
                                     </td>
                                 </tr>
                             @endforeach

@@ -14,15 +14,20 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #2b3246;
+    background-color: #2e2e2e;
     cursor: pointer;
-    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
-    color: #0ad406;
+    color: #06ff01;
     margin: 20px;
 }
+
 .noti-check:hover {
-    background-color: rgb(255 255 255);
+    background-color: #ffffff;
+    border: 1px solid ;
     transition: 0.5s;
+}
+
+.noti-check:hover span{
+    color: #000000;
 }
 
 .noti-color {
@@ -84,10 +89,10 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #2b3246;
+    border: 1px solid red;
+    background-color: #ed5757;
     cursor: pointer;
-    box-shadow: 9px 9px 18px #262c3e, -9px -9px 18px #30384e;
-    color: rgb(255, 10, 1);
+    color: white;
     margin: 20px;
 }
 

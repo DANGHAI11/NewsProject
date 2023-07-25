@@ -166,7 +166,6 @@ main {
                             }
                         }
                         select {
-                            appearance: none;
                             @include wh(334px, 40px);
                             background: #ffffff;
                             border: 1px solid #dedede;
@@ -282,7 +281,7 @@ main {
                         color: #747474;
                         margin-bottom: 55px;
                     }
-                    .relase-heart {
+                    .release-heart {
                         transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
                         cursor: pointer;
                         i {
@@ -293,8 +292,12 @@ main {
                             }
                             -webkit-text-fill-color: transparent;
                             -webkit-text-stroke-width: 2px;
-                            -webkit-text-stroke: 3px #000000;
-                            font-size: 2rem;
+                            -webkit-text-stroke: 2px #000000;
+                            font-size: 1.2rem;
+                            margin-right: 5px;
+                        }
+                        span {
+                            font: normal 500 20px/27px "Noto Sans JP";
                         }
                     }
                 }
@@ -370,7 +373,7 @@ main {
                                 position: relative;
                                 input {
                                     font: normal 500 17px/20.27px "Noto Sans JP";
-                                    width: 100%;
+                                    width: 90%;
                                     height: 82px;
                                     border-radius: 4px;
                                     border: 1px solid #e1e1e1;
@@ -378,11 +381,12 @@ main {
                                     padding: 15px;
                                 }
                                 button {
+                                    font: normal 500 16px/20.27px "Noto Sans JP";
                                     position: absolute;
                                     top: calc(50% - (30px / 2));
                                     right: 20px;
-                                    width: 60px;
-                                    height: 30px;
+                                    width: 80px;
+                                    height: 40px;
                                     outline: none;
                                     border: 1px solid #e1e1e1;
                                     cursor: pointer;
@@ -393,6 +397,31 @@ main {
                             }
                         }
                     }
+                    .search-comment {
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        width: 100%;
+                        margin: 20px 0;
+                        .comment-message {
+                            font: normal normal 14px/20.27px "Noto Sans JP";
+                            &.green{
+                                color: #03bb03;
+                            }
+                            &.red{
+                                color: red;
+                            }
+                        }
+                        .order-comment {
+                            width: 150px;
+                            height: 40px;
+                            padding: 10px;
+                            border-radius: 10px;
+                            margin-left: 50px;
+                            font: normal normal 14px/20.27px "Noto Sans JP";
+                        }
+                    }
+
                     .comment-list {
                         .row {
                             &.user-comment {
@@ -445,21 +474,22 @@ main {
                                     .button-comment {
                                         position: absolute;
                                         top: 20px;
-                                        right: 24px;
+                                        right: 30px;
                                         display: none;
                                         div,
                                         button {
-                                            font: normal normal 15px/20.27px "Noto Sans JP";
+                                            font: normal 500 15px/20.27px "Noto Sans JP";
                                             width: 80px;
                                             height: 30px;
-                                            background-color: #adadad;
+                                            background-color: #F6F4EB;
                                             display: flex;
                                             justify-content: center;
                                             align-items: center;
-                                            color: #000000;
+                                            color: #4682A9;
                                             outline: none;
-                                            border: none;
                                             cursor: pointer;
+                                            border: 1px solid #91C8E4;
+                                            border-radius: 5px;
                                             &:first-child {
                                                 margin-bottom: 5px;
                                             }
@@ -467,22 +497,22 @@ main {
                                     }
                                     form {
                                         display: none;
+                                        justify-content: space-between;
+                                        flex-wrap: wrap;
+                                        align-items: center;
                                         width: 100%;
                                         position: relative;
                                         margin: 15px 0;
                                         textarea {
-                                            width: 100%;
+                                            width: calc(100% - 60px - 10px);
                                             height: 100px;
                                             font: normal 500 17px/20.27px "Noto Sans JP";
                                             border-radius: 4px;
                                             border: 1px solid #e1e1e1;
                                             background: #fff;
-                                            padding: 15px;
+                                            padding: 15px 100px 15px 15px;
                                         }
                                         button {
-                                            position: absolute;
-                                            top: 50%;
-                                            right: 30px;
                                             outline: none;
                                             border: 1px solid #e1e1e1;
                                             cursor: pointer;
@@ -495,6 +525,16 @@ main {
                                     }
                                 }
                             }
+                        }
+                    }
+                    .comment-load-more {
+                        font: normal 500 17px/20.27px "Noto Sans JP";
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        &:hover {
+                            color: red;
                         }
                     }
                 }

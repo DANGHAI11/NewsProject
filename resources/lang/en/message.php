@@ -2,7 +2,7 @@
 
 return [
     'error_login' => 'Email or password is incorrect or not authenticated please check again.',
-    'success_register' => 'Registration is successful, Please check your email to confirm.',
+    'success_register' => 'Registration is successfully, Please check your email to confirm.',
     'error_register' => 'Registration failed!',
     'email_identified' => 'Sorry your email cannot be identified.',
     'success_email_verify' => 'Your e-mail is verified or the account has been deleted. You can now login.',
@@ -31,7 +31,7 @@ return [
     'error_create_post' => 'Created post fail',
     'post_does_exist' => 'The post doesn’t exist',
     'success_delete_post' => 'Post delete successfully.',
-    'error_delete_post' => 'Post detete fail',
+    'error_delete_post' => 'Post delete fails',
     'permission' => 'You do not have permission to access this page',
     'list_blog' => 'List Blog',
     'category' => 'Category',

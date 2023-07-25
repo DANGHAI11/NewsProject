@@ -1,6 +1,6 @@
-const releaseHeart = $(".relase-heart");
-const releaseHeartTotal = $(".relase-heart span");
-const releaseHeartStatus = $(".relase-heart i");
+const releaseHeart = $(".release-heart");
+const releaseHeartTotal = $(".release-heart span");
+const releaseHeartStatus = $(".release-heart i");
 
 releaseHeart.click(function () {
     let urlLike = $(this).data("url");
