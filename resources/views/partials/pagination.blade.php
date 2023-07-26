@@ -37,7 +37,7 @@
                         </a>
                     </li>
                 @endif
-                @foreach ($elements as $element)
+                @foreach ($elements as $index => $element)
                     @if (is_array($element))
                         @foreach ($element as $page => $url)
                             @if ($page == $paginator->currentPage())
@@ -46,6 +46,8 @@
                                 <li><a href="{{ $url }}">{{ $page }}</a></li>
                             @endif
                         @endforeach
+                    @else
+                        <li><a>{{ $element }}</a></li>
                     @endif
                 @endforeach
                 @if ($data->hasMorePages())

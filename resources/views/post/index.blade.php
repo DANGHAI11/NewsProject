@@ -116,7 +116,7 @@
                         @endforeach
                     </div>
                 </div>
-                {{ $posts->links('partials.pagination', ['data' => $posts]) }}
+                {{ $posts->onEachSide(2)->links('partials.pagination', ['data' => $posts]) }}
             </div>
         </div>
     </main>
