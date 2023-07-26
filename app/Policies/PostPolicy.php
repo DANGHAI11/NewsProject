@@ -9,7 +9,7 @@ class PostPolicy
 {
     public function create(User $user)
     {
-        return $user->status === User::STATUS_ACTIVE && $user->role === User::ROLE_USER;
+        return $user->status === User::STATUS_ACTIVE;
     }
 
     public function update(User $user, Post $post)
